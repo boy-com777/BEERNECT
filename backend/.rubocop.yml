@@ -1,0 +1,63 @@
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+AllCops:
+  TargetRubyVersion: 2.7
+  NewCops: enable # rubocopの新機能をactiveにする
+  Exclude:
+    - 'assets/**/*'
+    - 'bin/**/*'
+    - 'db/schema.rb'
+    - 'log/**/*'
+    - 'node_modules/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - 'lib/**/*'
+
+Rails/FilePath:
+  Exclude:
+    - 'config/environments/development.rb'
+
+Rails/Output:
+  Exclude:
+    - 'db/seeds.rb'
+
+# 日本語のコメントを許可
+Style/AsciiComments:
+  Enabled: false
+
+# ドキュメントの無い public class を許可
+Style/Documentation:
+  Enabled: false
+
+# frozen_string_literal の指定強制を解除
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# 1行の最大
+Layout/LineLength:
+  Max: 160
+
+# %w, %i を使用強制を解除（使用しても使用しなくてもOKにする）
+Style/WordArray:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+# メソッドの ABC 構成サイズを最大値 30 に変更
+Metrics/AbcSize:
+  Max: 30
+
+# メソッドの行最大値を 30 に変更
+Metrics/MethodLength:
+  Max: 30
+
+# Blockの行最大数を 200 に変更
+Metrics/BlockLength:
+  Max: 200
+
+# Classの行最大数を 1000 に変更
+Metrics/ClassLength:
+  Max: 1000
