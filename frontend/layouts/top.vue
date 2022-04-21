@@ -2,8 +2,10 @@
   <v-app>
     <top-app-bar
       :menus="menus"
+      :img-height="imgHeight"
     />
     <v-img
+      id="scroll-top"
       dark
       :src="image_src"
       :height="imgHeight"
@@ -32,9 +34,10 @@
       >
         <v-row
           v-for="(menu, i) in menus"
-          :key="i"
+          :key="`menu-${i}`"
         >
           <v-col
+            :id="menu.title"
             cols="12"
           >
             <v-card
