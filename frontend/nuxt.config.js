@@ -32,6 +32,7 @@ export default {
     '@nuxtjs/eslint-module',
     // Doc: https://www.npmjs.com/package/@nuxtjs/vuetify
     '@nuxtjs/vuetify',
+    '@nuxtjs/dotenv',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
