@@ -8,30 +8,30 @@ module V1
               end
       render json: users
     end
-  end
 
-  def create
-    user = User.create!(user_params)
-    if user.save
-      render json: user
-    else
-      render json: user.errors
+    def create
+      user = User.create!(user_params)
+      if user.save
+        render json: user
+      else
+        render json: user.errors
+      end
     end
-  end
 
-  def update
-    user = User.find(params[:id])
-    user.update!(user_params)
-    if user.save
-      render json: user
-    else
-      render json: user.errors
+    def update
+      user = User.find(params[:id])
+      user.update!(user_params)
+      if user.save
+        render json: user
+      else
+        render json: user.errors
+      end
     end
-  end
 
-  private
+    private
 
-  def user_params
-    params.require(:user).permit(:name, :email, :uid, :profile, :favorite_beer, :avatar)
+    def user_params
+      params.require(:user).permit(:name, :email, :uid, :profile, :favorite_beer, :avatar)
+    end
   end
 end
