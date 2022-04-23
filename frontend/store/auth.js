@@ -21,7 +21,7 @@ export const actions = {
   setUser(context, data) {
     context.commit('setUser', data)
   },
-  setLoginState(context) {
-    context.commit('setLoginState', true)
+  setLoginState(context, data) {
+    context.commit('setLoginState', data)
   },
 }
