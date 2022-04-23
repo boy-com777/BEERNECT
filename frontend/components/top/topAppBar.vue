@@ -9,9 +9,9 @@
     <app-logo
       @click.native="goTo('scroll-top')"
     />
-    <v-toolbar-title>
-      {{ appName }}
-    </v-toolbar-title>
+    <app-title
+      class="ml-2 hidden-sm-and-down"
+    />
     <v-spacer />
     <v-toolbar-items class="ml-2 hidden-sm-and-down">
       <v-btn
@@ -59,12 +59,14 @@
 
 <script>
 import appLogo from '~/components/ui/appLogo'
+import appTitle from '~/components/ui/appTitle'
 import signupLink from '~/components/beforeLogin/signupLink'
 import signinLink from '~/components/beforeLogin/signinLink'
 import guestLink from '~/components/beforeLogin/guestLink'
 export default {
   components: {
     appLogo,
+    appTitle,
     signupLink,
     signinLink,
     guestLink
@@ -79,9 +81,9 @@ export default {
       default: 0
     }
   },
-  data ({ $config: { appName }, $store }) {
+  data ({ $store }) {
     return {
-      appName,
+      scrollY: 0,
       appBarHeight: $store.state.auth.styles.beforeLogin.appBarHeight
     }
   },

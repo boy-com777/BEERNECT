@@ -8,7 +8,7 @@
         cols="12"
         class="my-8 text-center"
       >
-        <h1 class="text-h5 font-wight-bold">
+        <h1 class="text-h5 font-weight-bold">
           メールアドレスでアカウントを登録する
         </h1>
       </v-col>
@@ -90,6 +90,7 @@
 <script>
 import firebase from '~/plugins/firebase'
 export default {
+  layout: 'beforeLogin',
   data () {
     const max = 12
     return {
