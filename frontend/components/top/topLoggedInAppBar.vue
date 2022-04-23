@@ -24,9 +24,9 @@
         {{ $t(`menus.${menu.title}`) }}
       </v-btn>
     </v-toolbar-items>
-    <signup-link />
-    <signin-link />
-    <guest-link />
+    <posts-link />
+    <mypage-link />
+    <signout-link />
     <v-menu
       bottom
       nudge-left="110"
@@ -60,16 +60,16 @@
 <script>
 import appLogo from '~/components/ui/appLogo'
 import appTitle from '~/components/ui/appTitle'
-import signupLink from '~/components/beforeLogin/signupLink'
-import signinLink from '~/components/beforeLogin/signinLink'
-import guestLink from '~/components/beforeLogin/guestLink'
+import postsLink from '~/components/loggedIn/postsLink'
+import mypageLink from '~/components/loggedIn/mypageLink'
+import signoutLink from '~/components/loggedIn/signoutLink'
 export default {
   components: {
     appLogo,
     appTitle,
-    signupLink,
-    signinLink,
-    guestLink
+    postsLink,
+    mypageLink,
+    signoutLink
   },
   props: {
     menus: {
@@ -84,7 +84,7 @@ export default {
   data ({ $store }) {
     return {
       scrollY: 0,
-      appBarHeight: $store.state.auth.styles.beforeLogin.appBarHeight
+      appBarHeight: $store.state.auth.styles.isLoggedIn.appBarHeight
     }
   },
   computed: {

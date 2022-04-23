@@ -5,6 +5,9 @@ export const state = () => ({
     beforeLogin: {
       appBarHeight: 56,
     },
+    isLoggedIn: {
+      appBarHeight: 56,
+    },
   },
 })
 

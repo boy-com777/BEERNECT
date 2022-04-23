@@ -21,7 +21,10 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['@/plugins/authCheck'],
+  plugins: [
+    '@/plugins/authCheck',
+    { src: '~/plugins/sessionStorage.js', ssr: false },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

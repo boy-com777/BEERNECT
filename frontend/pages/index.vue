@@ -6,6 +6,8 @@
 
 <script>
 export default {
-  layout: 'top'
+  layout ({ store }) {
+    return store.state.auth.loggedIn ? 'default' : 'top'
+  }
 }
 </script>
