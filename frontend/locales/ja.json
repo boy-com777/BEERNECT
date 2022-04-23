@@ -3,5 +3,10 @@
     "about": "BEERNECT とは",
     "style": "スタイルから探す",
     "map": "地図から探す"
+  },
+  "pages": {
+    "signup": "アカウント登録",
+    "signin": "ログイン",
+    "guest": "ゲストログイン"
   }
 }

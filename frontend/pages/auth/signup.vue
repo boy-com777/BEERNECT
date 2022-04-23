@@ -160,7 +160,7 @@ export default {
         uid: response.user.uid
       }
       await this.$axios.$post('/v1/users', {user})
-      this.$router.push('/')
+      this.$router.push('/auth/mypage')
     }
   }
 }

@@ -13,24 +13,61 @@
       {{ appName }}
     </v-toolbar-title>
     <v-spacer />
-    <v-toolbar-items clas="ml-2">
+    <v-toolbar-items class="ml-2 hidden-sm-and-down">
       <v-btn
         v-for="(menu, i) in menus"
         :key="`menu-btn-${i}`"
         text
+        :class="{ 'hidden-sm-and-down': (menu.title === 'about') }"
         @click="goTo(menu.title)"
       >
         {{ $t(`menus.${menu.title}`) }}
       </v-btn>
     </v-toolbar-items>
+    <signup-link />
+    <signin-link />
+    <guest-link />
+    <v-menu
+      bottom
+      nudge-left="110"
+      nudge-width="100"
+    >
+      <template #activator="{ on }">
+        <v-app-bar-nav-icon
+          class="hidden-md-and-up"
+          v-on="on"
+        />
+      </template>
+      <v-list
+        dense
+        class="hidden-md-and-up"
+      >
+        <v-list-item
+          v-for="(menu, i) in menus"
+          :key="`menu-list-${i}`"
+          exact
+          @click="goTo(menu.title)"
+        >
+          <v-list-item-title>
+            {{ $t(`menus.${menu.title}`) }}
+          </v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
   </v-app-bar>
 </template>
 
 <script>
 import appLogo from '~/components/ui/appLogo'
+import signupLink from '~/components/beforeLogin/signupLink'
+import signinLink from '~/components/beforeLogin/signinLink'
+import guestLink from '~/components/beforeLogin/guestLink'
 export default {
   components: {
-    appLogo
+    appLogo,
+    signupLink,
+    signinLink,
+    guestLink
   },
   props: {
     menus: {
