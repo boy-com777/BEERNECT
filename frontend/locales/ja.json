@@ -7,6 +7,9 @@
   "pages": {
     "signup": "アカウント登録",
     "signin": "ログイン",
-    "guest": "ゲストログイン"
+    "guest": "ゲストログイン",
+    "mypage": "マイページ",
+    "posts": "投稿一覧",
+    "signout": "ログアウト"
   }
 }

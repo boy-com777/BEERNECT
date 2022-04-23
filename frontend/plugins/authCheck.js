@@ -9,8 +9,6 @@ const authCheck = ({ store }) => {
           uid: user.uid,
         },
       })
-      // eslint-disable-next-line no-console
-      console.log('ログインしているユーザー：', data)
       store.dispatch('auth/setUser', data)
       store.dispatch('auth/setLoginState', true)
     } else {
