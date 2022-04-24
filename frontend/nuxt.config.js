@@ -36,6 +36,7 @@ export default {
     // Doc: https://www.npmjs.com/package/@nuxtjs/vuetify
     '@nuxtjs/vuetify',
     '@nuxtjs/dotenv',
+    '@nuxtjs/svg',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -90,6 +91,11 @@ export default {
 
   publicRuntimeConfig: {
     appName: process.env.APP_NAME,
+  },
+
+  svg: {
+    vueSvgLoader: {},
+    svgSpriteLoader: {},
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

@@ -44,9 +44,7 @@
           </v-icon>
           {{ user.name }} が飲んだビール一覧
         </v-tab>
-        <v-tab-item
-          background-color="transparent"
-        >
+        <v-tab-item>
           <v-card
             width="600"
             flat
@@ -88,3 +86,6 @@ export default {
   },
 }
 </script>
+
+<style>
+</style>
