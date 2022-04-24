@@ -40,8 +40,10 @@
           <v-btn
             :disabled="!isValid"
             rounded
+            dark
+            outlined
             block
-            color="myorange"
+            color="myblue"
             class="white--text"
             @click="signIn"
           >
