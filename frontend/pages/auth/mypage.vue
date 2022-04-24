@@ -40,7 +40,7 @@
           v-if="user"
         >
           <v-icon left>
-            mdi-liqur
+            mdi-liquor
           </v-icon>
           {{ user.name }} が飲んだビール一覧
         </v-tab>
