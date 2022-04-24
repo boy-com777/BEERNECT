@@ -67,7 +67,9 @@
             :disabled="!isValid"
             rounded
             block
-            color="myorange"
+            dark
+            outlined
+            color="myblue"
             class="white--text"
             @click="signUp"
           >
