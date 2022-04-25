@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <v-sheet>
     <v-img
       id="scroll-top"
       dark
@@ -60,10 +61,11 @@
                       color="success"
                       class="white--text"
                       target="_blank"
-                      :href="`${pilsner.brewery_url}`"
                     >
-                      ご購入はこちら
-                      <v-icon>
+                      <a :href="`${pilsner.brewery_url}`" target="_blank" class="button">ご購入はこちら</a>
+                      <v-icon
+                        right
+                      >
                         mdi-chevron-triple-right
                       </v-icon>
                     </v-btn>
@@ -78,8 +80,27 @@
                       class="white--text"
                     >
                       レビューを書く
-                      <v-icon>
+                      <v-icon
+                        right
+                      >
                         mdi-pencil
+                      </v-icon>
+                    </v-btn>
+                  </v-card-actions>
+                  <v-card-actions>
+                    <v-btn
+                      width="300"
+                      rounded
+                      outlined
+                      dark
+                      color="success"
+                      class="white--text"
+                    >
+                      レビューを見る
+                      <v-icon
+                        right
+                      >
+                        mdi-message-text
                       </v-icon>
                     </v-btn>
                   </v-card-actions>
@@ -99,6 +120,7 @@
         </v-row>
       </v-container>
     </v-card>
+    </v-sheet>
   </v-app>
 </template>
 
@@ -122,3 +144,10 @@ export default {
   }
 }
 </script>
+
+<style>
+.button {
+  text-decoration: none;
+  color: #44D69E;
+}
+</style>
