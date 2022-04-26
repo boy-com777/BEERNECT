@@ -1,5 +1,7 @@
 module V1
   class BeersController < ApplicationController
+    include Pagination
+
     def index
       beer = Beer.all
       render json: beer
@@ -11,8 +13,11 @@ module V1
     end
 
     def pilsner
-      beer = Beer.where(beer_style: 'ピルスナー')
-      render json: beer
+      beer = Beer.where(beer_style: 'ピルスナー').page(params[:page]).per(10)
+      pagination = resources_with_pagination(beer)
+      @beer = beer.as_json
+      object = { beer: @beer, kaminari: pagination }
+      render json: object
     end
 
     def paleale
