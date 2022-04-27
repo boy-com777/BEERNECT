@@ -12,12 +12,17 @@ module V1
       render json: beer
     end
 
+    # def pilsner
+    #   beer = Beer.where(beer_style: 'ピルスナー').page(params[:page]).per(10)
+    #   pagination = resources_with_pagination(beer)
+    #   @beer = beer.as_json
+    #   object = { beer: @beer, kaminari: pagination }
+    #   render json: object
+    # end
+
     def pilsner
-      beer = Beer.where(beer_style: 'ピルスナー').page(params[:page]).per(10)
-      pagination = resources_with_pagination(beer)
-      @beer = beer.as_json
-      object = { beer: @beer, kaminari: pagination }
-      render json: object
+      beer = Beer.where(beer_style: 'ピルスナー')
+      render json: beer
     end
 
     def paleale

@@ -22,111 +22,25 @@
         </v-col>
       </v-row>
     </v-img>
-    <v-card
-      flat
-      color="transparent"
-      class="mx-auto"
-    >
-      <v-container>
-        <v-row
-          dense
+    <style-card
+      :styles="beers"
+    />
+        <!-- <VueInfiniteLoading
+          spinner="bubble"
+          @infinite="infiniteHandler"
         >
-          <v-col
-            v-for="(pilsner, i) in pilsners"
-            :key="i"
-            cols="12"
-            xs="6"
-          >
-            <v-card
-              width="800"
-              height="300"
-              flat
-              color="transparent"
-              class="mx-auto"
-            >
-              <div class="d-flex flex-no-wrap justify-space-between">
-                <div>
-                  <v-card-title
-                    class="text-h5"
-                  >
-                    {{ pilsner.beer_name }}
-                  </v-card-title>
-                  <v-divider></v-divider>
-                  <v-card-actions>
-                    <v-btn
-                      width="300"
-                      rounded
-                      outlined
-                      dark
-                      color="success"
-                      class="white--text"
-                      target="_blank"
-                    >
-                      <a :href="`${pilsner.brewery_url}`" target="_blank" class="button">ご購入はこちら</a>
-                      <v-icon
-                        right
-                      >
-                        mdi-chevron-triple-right
-                      </v-icon>
-                    </v-btn>
-                  </v-card-actions>
-                  <v-card-actions>
-                    <v-btn
-                      width="300"
-                      rounded
-                      outlined
-                      dark
-                      color="success"
-                      class="white--text"
-                    >
-                      レビューを書く
-                      <v-icon
-                        right
-                      >
-                        mdi-pencil
-                      </v-icon>
-                    </v-btn>
-                  </v-card-actions>
-                  <v-card-actions>
-                    <v-btn
-                      width="300"
-                      rounded
-                      outlined
-                      dark
-                      color="success"
-                      class="white--text"
-                    >
-                      レビューを見る
-                      <v-icon
-                        right
-                      >
-                        mdi-message-text
-                      </v-icon>
-                    </v-btn>
-                  </v-card-actions>
-                </div>
-                <v-avatar
-                  class="ma-3"
-                  size="250"
-                  tile
-                >
-                  <v-img
-                    :src="`${pilsner.image_url}`"
-                  />
-                </v-avatar>
-              </div>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-card>
+          <div slot="no-more">--- No more ---</div>
+          <div slot="no-results">--- No results---</div>
+        </VueInfiniteLoading> -->
     </v-sheet>
   </v-app>
 </template>
 
 <script>
+import styleCard from '~/components/beer/styleCard'
 export default {
   components: {
+    styleCard
   },
   layout ({ store }) {
     return store.state.auth.loggedIn ? 'loggedIn' : 'beforeLogin'
@@ -135,19 +49,35 @@ export default {
     return {
       image_src: require("@/assets/images/style/style.jpg"),
       imgHeight: 500,
-      pilsners: []
+      beers: [],
+      // next: 1,
     }
   },
   async fetch () {
-    const pilsners = await this.$axios.$get("/v1/beers/pilsner")
-    this.pilsners = pilsners
-  }
+    const beers = await this.$axios.$get("/v1/beers/pilsner")
+    this.beers = beers
+  },
+  // methods: {
+  //   async infiniteHandler ($state) {
+  //     if (this.next === null) {
+  //       $state.complete()
+  //     } else {
+  //       const params = {
+  //         params: {
+  //           page: this.next
+  //         }
+  //       }
+  //       await this.$axios.$get('/v1/beers/pilsner', params)
+  //         .then((response) => {
+  //           this.next = response.data.meta.next
+  //           this.pilsners.push(...response.data.beer)
+  //           $state.loaded()
+  //         })
+  //         .catch(() => {
+  //           $state.complete()
+  //         })
+  //     }
+  //   }
+  // }
 }
 </script>
-
-<style>
-.button {
-  text-decoration: none;
-  color: #44D69E;
-}
-</style>
