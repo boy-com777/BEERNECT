@@ -9,7 +9,7 @@
         dense
       >
         <v-col
-          v-for="(style, i) in styles"
+          v-for="(beer, i) in beers"
           :key="i"
           cols="12"
           xs="6"
@@ -26,7 +26,7 @@
                 <v-card-title
                   class="text-h5"
                 >
-                  {{ style.beer_name }}
+                  {{ beer.beer_name }}
                 </v-card-title>
                 <v-divider></v-divider>
                 <div>レビュー点数</div>
@@ -40,7 +40,7 @@
                     class="white--text"
                     target="_blank"
                   >
-                    <a :href="`${style.brewery_url}`" target="_blank" class="button">ご購入はこちら</a>
+                    <a :href="`${beer.brewery_url}`" target="_blank" class="button">ご購入はこちら</a>
                     <v-icon
                       right
                     >
@@ -89,7 +89,7 @@
                 tile
               >
                 <v-img
-                  :src="`${style.image_url}`"
+                  :src="`${beer.image_url}`"
                 />
               </v-avatar>
             </div>
@@ -103,9 +103,9 @@
 <script>
 export default {
   props: {
-    styles: {
-      type: String,
-      default: ''
+    beers: {
+      type: Array,
+      default: () => {}
     }
   }
 }

@@ -22,8 +22,8 @@
         </v-col>
       </v-row>
     </v-img>
-    <style-card
-      :styles="beers"
+    <beer-card
+      :beers="beers"
     />
         <!-- <VueInfiniteLoading
           spinner="bubble"
@@ -37,10 +37,10 @@
 </template>
 
 <script>
-import styleCard from '~/components/beer/styleCard'
+import beerCard from '~/components/beer/beerCard'
 export default {
   components: {
-    styleCard
+    beerCard
   },
   layout ({ store }) {
     return store.state.auth.loggedIn ? 'loggedIn' : 'beforeLogin'
