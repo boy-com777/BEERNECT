@@ -56,27 +56,6 @@
         </template>
       </div>
     </v-card>
-    <br>
-    <v-card
-      width="320"
-      flat
-      color="transparent"
-      class="mx-auto"
-    >
-      <v-btn
-        rounded
-        block
-        dark
-        outlined
-        color="success"
-        class="white--text"
-      >
-        <v-icon left>
-          mdi-pencil
-        </v-icon>
-        アカウント編集
-      </v-btn>
-    </v-card>
   </v-container>
 </template>
 

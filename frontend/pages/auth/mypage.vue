@@ -48,6 +48,28 @@
           class="tab-item"
         >
           <profile />
+          <br>
+          <v-card
+            width="320"
+            flat
+            color="transparent"
+            class="mx-auto"
+          >
+            <v-btn
+              rounded
+              block
+              dark
+              outlined
+              color="success"
+              class="white--text"
+              to="/auth/edit/"
+            >
+              <v-icon left>
+                mdi-pencil
+              </v-icon>
+              アカウント編集
+            </v-btn>
+          </v-card>
         </v-tab-item>
         <v-tab-item
           class="tab-item"
