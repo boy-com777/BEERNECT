@@ -8,6 +8,7 @@
     >
       <v-tabs
         background-color="transparent"
+        class="tabs"
         grow
       >
         <v-tab>
@@ -88,4 +89,8 @@ export default {
 </script>
 
 <style>
+.tabs {
+  position: fixed;
+  right: 0px
+}
 </style>
