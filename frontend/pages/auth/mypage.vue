@@ -111,11 +111,24 @@ export default {
     memory,
   },
   layout: 'loggedIn',
+  fetch({
+    store,
+    redirect
+  }) {
+    store.watch(
+      state => state.auth.currentUser,
+      (newUser, oldUser) => {
+        if (!newUser) {
+          return redirect('/auth/signin')
+        }
+      }
+    )
+  },
   computed: {
     user() {
       return this.$store.state.auth.currentUser
     }
-  },
+  }
 }
 </script>
 
