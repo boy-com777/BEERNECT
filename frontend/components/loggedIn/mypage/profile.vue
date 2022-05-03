@@ -47,8 +47,8 @@
       <br>
       <div>
         <template v-if="user.profile">
-          <li class="text-h5">お気に入りのビール</li>
-          <h2>{{ user.profile }}</h2>
+          <li class="text-h5">自己紹介</li>
+          <h2 class="text-decoration-underline">{{ user.profile }}</h2>
         </template>
         <template v-else>
           <li class="text-h5">自己紹介</li>

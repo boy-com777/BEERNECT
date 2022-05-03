@@ -24,6 +24,8 @@
         <v-form>
           <v-text-field
             v-model="name"
+            :counter="nameMax"
+            :rules="nameRules"
             label="アカウント名"
             prepend-icon="mdi-account-circle"
             placeholder="表示されるアカウント名"
@@ -37,7 +39,7 @@
           />
           <v-textarea
             v-model="profile"
-            :counter="max"
+            :counter="profileMax"
             :rules="profileRules"
             label="自己紹介"
             prepend-icon="mdi-badge-account-horizontal-outline"
@@ -64,16 +66,31 @@
 <script>
 export default {
   layout: 'loggedIn',
+  async asyncData({ $axios, store }) {
+    const currentUser = store.getters['auth/currentUser']
+    const response = await $axios.$get(`/v1/users/${currentUser.id}`)
+    return {
+      name: response.name,
+      favorite_beer: response.favorite_beer,
+      profile: response.profile
+    }
+  },
   data () {
-    const max = 200
+    const nameMax = 12
+    const profileMax = 200
     return {
       name: '',
       favorite_beer: '',
       profile: '',
-      max,
+      nameMax,
+      profileMax,
+      nameRules: [
+        v => !!v || '',
+        v => (!!v && nameMax >= v.length) || `${nameMax}文字以内で入力してください`
+      ],
       profileRules: [
         v => !!v || '',
-        v => (!!v && max >= v.length) || `${max}文字以内で入力してください`
+        v => (!!v && profileMax >= v.length) || `${profileMax}文字以内で入力してください`
       ]
     }
   },

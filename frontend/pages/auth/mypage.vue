@@ -62,7 +62,7 @@
               outlined
               color="success"
               class="white--text"
-              to="/auth/edit/"
+              to="/auth/edit"
             >
               <v-icon left>
                 mdi-pencil
