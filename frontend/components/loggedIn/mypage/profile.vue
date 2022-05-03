@@ -11,12 +11,12 @@
         justify-center
       >
         <div>
-          <template v-if="user.avatar">
+          <template v-if="user.avatar.url">
             <v-avatar
               size="250"
             >
               <v-img
-                :src="user.avatar"
+                :src="user.avatar.url"
               />
             </v-avatar>
           </template>

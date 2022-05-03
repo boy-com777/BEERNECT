@@ -46,6 +46,8 @@
             placeholder="200文字以内で入力してください"
             outlined
           />
+        </v-form>
+        <v-card-actions>
           <v-btn
             rounded
             outlined
@@ -57,7 +59,30 @@
           >
             プロフィール更新
           </v-btn>
+        </v-card-actions>
+        <v-form>
+          <v-file-input
+            v-model="editAvatar"
+            label="アイコン画像"
+            prepend-icon="mdi-image"
+            placeholder="画像を選択してください"
+            accept="image/*"
+            @change="setAvatar"
+          />
         </v-form>
+        <v-card-actions>
+          <v-btn
+            rounded
+            outlined
+            block
+            dark
+            color="success"
+            class="ml-2 font-weight-bold"
+            @click="changeUserAvatar"
+          >
+            アイコン更新
+          </v-btn>
+        </v-card-actions>
       </v-card>
     </v-row>
   </v-container>
@@ -72,7 +97,8 @@ export default {
     return {
       name: response.name,
       favorite_beer: response.favorite_beer,
-      profile: response.profile
+      profile: response.profile,
+      userId: response.id
     }
   },
   data () {
@@ -82,6 +108,8 @@ export default {
       name: '',
       favorite_beer: '',
       profile: '',
+      editAvatar: '',
+      input_Avatar: null,
       nameMax,
       profileMax,
       nameRules: [
@@ -109,11 +137,46 @@ export default {
         }
       })
       .then(() => {
+        alert('プロフィール更新しました')
         this.$router.push('/auth/mypage')
       })
       .catch((error) => {
         alert(error.message)
       })
+    },
+    setAvatar(file){
+      this.editAvatar = file
+      if (file !== undefined && file !== null){
+        if (file.name.lastIndexOf(".") <= 0) {
+          return
+        }
+        const fr = new FileReader()
+        fr.readAsDataURL(file)
+        fr.addEventListener("load", () => {
+          this.input_Avatar = fr.result
+        })
+      } else {
+        this.input_Avatar = null
+      }
+    },
+    async changeUserAvatar() {
+      const formData = new FormData()
+      formData.append('avatar', this.editAvatar)
+      const config = {
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
+      }
+      await this.$axios.$patch(`/v1/users/${this.userId}/avatar_update`, formData, config)
+        .then(() => {
+          this.$router.push('/auth/mypage')
+          .then((response) => {
+            this.avatar = response.avatar
+          })
+        })
+        .catch((error) => {
+          alert(error.message)
+        })
     }
   }
 }
