@@ -86,6 +86,24 @@ export default {
       error: null,
     }
   },
+  fetch({
+    store,
+    redirect
+  }) {
+    store.watch(
+      state => state.auth.currentUser,
+      (newUser, oldUser) => {
+        if (newUser) {
+          return redirect('/auth/mypage')
+        }
+      }
+    )
+  },
+  computed: {
+    user() {
+      return this.$store.state.auth.currentUser
+    }
+  },
   methods: {
     async signIn () {
       this.error = null

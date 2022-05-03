@@ -116,6 +116,19 @@ export default {
       ]
     }
   },
+  fetch({
+    store,
+    redirect
+  }) {
+    store.watch(
+      state => state.auth.currentUser,
+      (newUser, oldUser) => {
+        if (newUser) {
+          return redirect('/auth/mypage')
+        }
+      }
+    )
+  },
   computed: {
     emailForm () {
       const placeholder = this.noValidation ? undefined : 'sample@sample.com'
@@ -165,6 +178,6 @@ export default {
       await this.$axios.$post('/v1/users', {user})
       this.$router.push('/auth/mypage')
     }
-  }
+  },
 }
 </script>
