@@ -11,12 +11,12 @@
         justify-center
       >
         <div>
-          <template v-if="user.avatar">
+          <template v-if="user.avatar.url">
             <v-avatar
               size="250"
             >
               <v-img
-                :src="user.avatar"
+                :src="user.avatar.url"
               />
             </v-avatar>
           </template>
@@ -31,51 +31,31 @@
           </template>
         </div>
       </v-layout>
+      <br>
       <li class="text-h5">アカウント名</li>
-      <h2 class="text-decoration-underline">{{ user.name }}</h2>
+      <h3 class="text-decoration-underline">{{ user.name }}</h3>
       <br>
       <div>
         <template v-if="user.favorite_beer">
           <li class="text-h5">お気に入りのビール</li>
-          <h2 class="text-decoration-underline">{{ user.favorite_beer }}</h2>
+          <h3 class="text-decoration-underline">{{ user.favorite_beer }}</h3>
         </template>
         <template v-else>
           <li class="text-h5">お気に入りのビール</li>
-          <h2 class="text-decoration-underline">お気に入りのビールを登録しよう!!</h2>
+          <h3 class="text-decoration-underline">お気に入りのビールを登録しよう!!</h3>
         </template>
       </div>
       <br>
       <div>
         <template v-if="user.profile">
-          <li class="text-h5">お気に入りのビール</li>
-          <h2>{{ user.profile }}</h2>
+          <li class="text-h5">自己紹介</li>
+          <h3 class="text-decoration-underline">{{ user.profile }}</h3>
         </template>
         <template v-else>
           <li class="text-h5">自己紹介</li>
-          <h2 class="text-decoration-underline">自己紹介文を登録しよう!!</h2>
+          <h3 class="text-decoration-underline">自己紹介文を登録しよう!!</h3>
         </template>
       </div>
-    </v-card>
-    <br>
-    <v-card
-      width="320"
-      flat
-      color="transparent"
-      class="mx-auto"
-    >
-      <v-btn
-        rounded
-        block
-        dark
-        outlined
-        color="success"
-        class="white--text"
-      >
-        <v-icon left>
-          mdi-pencil
-        </v-icon>
-        アカウント編集
-      </v-btn>
     </v-card>
   </v-container>
 </template>

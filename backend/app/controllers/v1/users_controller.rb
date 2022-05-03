@@ -9,6 +9,11 @@ module V1
       render json: users
     end
 
+    def show
+      user = User.find(params[:id])
+      render json: user
+    end
+
     def create
       user = User.create!(user_params)
       if user.save
@@ -21,6 +26,16 @@ module V1
     def update
       user = User.find(params[:id])
       user.update!(user_params)
+      if user.save
+        render json: user
+      else
+        render json: user.errors
+      end
+    end
+
+    def avatar_update
+      user = User.find(params[:id])
+      user.update!(avatar: params[:avatar])
       if user.save
         render json: user
       else

@@ -28,3 +28,9 @@ export const actions = {
     context.commit('setLoginState', data)
   },
 }
+
+export const getters = {
+  currentUser(state) {
+    return state.currentUser
+  },
+}
