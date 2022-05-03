@@ -60,7 +60,7 @@
             プロフィール更新
           </v-btn>
         </v-card-actions>
-        <v-form>
+        <!-- <v-form> -->
           <v-file-input
             v-model="editAvatar"
             label="アイコン画像"
@@ -69,7 +69,7 @@
             accept="image/*"
             @change="setAvatar"
           />
-        </v-form>
+        <!-- </v-form> -->
         <v-card-actions>
           <v-btn
             rounded
@@ -168,11 +168,10 @@ export default {
         }
       }
       await this.$axios.$patch(`/v1/users/${this.userId}/avatar_update`, formData, config)
-        .then(() => {
+        .then((response) => {
+          this.avatar = response.avatar
+          alert('アイコン画像更新しました')
           this.$router.push('/auth/mypage')
-          .then((response) => {
-            this.avatar = response.avatar
-          })
         })
         .catch((error) => {
           alert(error.message)

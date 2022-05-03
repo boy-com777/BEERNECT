@@ -31,28 +31,29 @@
           </template>
         </div>
       </v-layout>
+      <br>
       <li class="text-h5">アカウント名</li>
-      <h2 class="text-decoration-underline">{{ user.name }}</h2>
+      <h3 class="text-decoration-underline">{{ user.name }}</h3>
       <br>
       <div>
         <template v-if="user.favorite_beer">
           <li class="text-h5">お気に入りのビール</li>
-          <h2 class="text-decoration-underline">{{ user.favorite_beer }}</h2>
+          <h3 class="text-decoration-underline">{{ user.favorite_beer }}</h3>
         </template>
         <template v-else>
           <li class="text-h5">お気に入りのビール</li>
-          <h2 class="text-decoration-underline">お気に入りのビールを登録しよう!!</h2>
+          <h3 class="text-decoration-underline">お気に入りのビールを登録しよう!!</h3>
         </template>
       </div>
       <br>
       <div>
         <template v-if="user.profile">
           <li class="text-h5">自己紹介</li>
-          <h2 class="text-decoration-underline">{{ user.profile }}</h2>
+          <h3 class="text-decoration-underline">{{ user.profile }}</h3>
         </template>
         <template v-else>
           <li class="text-h5">自己紹介</li>
-          <h2 class="text-decoration-underline">自己紹介文を登録しよう!!</h2>
+          <h3 class="text-decoration-underline">自己紹介文を登録しよう!!</h3>
         </template>
       </div>
     </v-card>
