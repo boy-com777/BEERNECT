@@ -74,6 +74,35 @@
         <v-tab-item
           class="tab-item"
         >
+          <v-toolbar
+            flat
+            color="transparent"
+            class="toolbar"
+          >
+            <v-card
+              width="320"
+              flat
+              color="transparent"
+              class="mx-auto"
+            >
+              <v-card-actions>
+                <v-btn
+                  rounded
+                  outlined
+                  block
+                  color="success"
+                  class="white--text"
+                  @click="openDisplay"
+                >
+                  <v-icon left>
+                    mdi-lead-pencil
+                  </v-icon>
+                  飲んだビールについて感想を書く
+                </v-btn>
+                <create-posts-dialog ref="dlg" />
+              </v-card-actions>
+            </v-card>
+          </v-toolbar>
           <post />
         </v-tab-item>
         <v-tab-item
@@ -102,6 +131,7 @@ import post from '~/components/loggedIn/mypage/post'
 import follow from '~/components/loggedIn/mypage/follow'
 import follower from '~/components/loggedIn/mypage/follower'
 import memory from '~/components/loggedIn/mypage/memory'
+import createPostsDialog from '~/components/posts/createPostsDialog'
 export default {
   components: {
     profile,
@@ -109,6 +139,7 @@ export default {
     follow,
     follower,
     memory,
+    createPostsDialog
   },
   layout: 'loggedIn',
   fetch({
@@ -127,6 +158,11 @@ export default {
   computed: {
     user() {
       return this.$store.state.auth.currentUser
+    }
+  },
+  methods: {
+    openDisplay() {
+      this.$refs.dlg.createPostsDialog = true
     }
   }
 }

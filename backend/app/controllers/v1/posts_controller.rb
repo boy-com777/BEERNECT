@@ -36,7 +36,7 @@ module V1
     private
 
     def post_params
-      params.require(:post).permit(:title, :contenr, :recomend_score, :user_id)
+      params.require(:post).permit(:title, :content, :recomend_score, :user_id)
     end
   end
 end
