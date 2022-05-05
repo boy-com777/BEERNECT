@@ -99,7 +99,7 @@
                   </v-icon>
                   飲んだビールについて感想を書く
                 </v-btn>
-                <create-posts-dialog ref="dlg" />
+                <create-posts-dialog ref="dlg" @submit="addPost"/>
               </v-card-actions>
             </v-card>
           </v-toolbar>
@@ -163,6 +163,13 @@ export default {
   methods: {
     openDisplay() {
       this.$refs.dlg.createPostsDialog = true
+    },
+    async addPost(post) {
+      const { data } = await this.$axios.$post('/v1/posts', { post })
+      this.$store.dispatch('auth/setUser', {
+        ...this.user,
+        posts: [...this.user.posts, data]
+      })
     }
   }
 }

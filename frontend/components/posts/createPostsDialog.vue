@@ -153,13 +153,24 @@ export default {
       }
     }
   },
+  // methods: {
+  //   async createPost(params) {
+  //     const { data } = await this.$axios.$post('/v1/posts', { params })
+  //     this.$store.dispatch('auth/setUser', {
+  //       ...this.user,
+  //       posts: [...this.user.posts, data]
+  //     })
+  //   }
+  // }
   methods: {
-    async createPost(params) {
-      const { data } = await this.$axios.$post('/v1/posts', { params })
-      this.$store.dispatch('auth/setUser', {
-        ...this.user,
-        posts: [...this.user.posts, data]
-      })
+    createPost() {
+      const post = {
+        title: this.title,
+        recomend_score: this.rating,
+        content: this.content,
+        user_id: this.user.id
+      }
+      this.$emit('submit', post)
     }
   }
 }
