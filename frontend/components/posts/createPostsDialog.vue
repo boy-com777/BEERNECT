@@ -26,7 +26,7 @@
               >
                 タイトル
                 <v-card
-                  widht="800"
+                  width="800"
                   flat
                   color="transparent"
                   class="mx-auto"
@@ -153,15 +153,6 @@ export default {
       }
     }
   },
-  // methods: {
-  //   async createPost(params) {
-  //     const { data } = await this.$axios.$post('/v1/posts', { params })
-  //     this.$store.dispatch('auth/setUser', {
-  //       ...this.user,
-  //       posts: [...this.user.posts, data]
-  //     })
-  //   }
-  // }
   methods: {
     createPost() {
       const post = {
