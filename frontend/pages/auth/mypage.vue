@@ -103,7 +103,7 @@
               </v-card-actions>
             </v-card>
           </v-toolbar>
-          <post />
+          <post :posts="user.posts"/>
         </v-tab-item>
         <v-tab-item
           class="tab-item"
@@ -142,6 +142,11 @@ export default {
     createPostsDialog
   },
   layout: 'loggedIn',
+  data () {
+    return {
+      posts: []
+    }
+  },
   fetch({
     store,
     redirect
