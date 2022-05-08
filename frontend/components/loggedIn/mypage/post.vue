@@ -149,6 +149,9 @@ export default {
           posts
         }
         this.$store.dispatch('auth/setUser', newUser)
+        .then(() => {
+          location.reload()
+        })
       }
     }
   }

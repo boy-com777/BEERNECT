@@ -177,6 +177,9 @@ export default {
         ...this.user,
         posts: [...this.user.posts, data]
       })
+      .then(()=> {
+        location.reload()
+      })
     }
   }
 }
