@@ -15,10 +15,11 @@
           cols="12"
         >
           <v-card
-            width="800"
+            width="600"
             height="400"
             flat
             outlined
+            class="mx-auto"
           >
             <v-container>
               <v-card-title>
@@ -69,6 +70,12 @@
                 <li>飲んだ感想</li>
                   <h4>{{ post.content }}</h4>
               </v-card>
+              <!-- <br>
+              <v-img
+                :src="`${post.image}`"
+                tile
+                size="80"
+              /> -->
             </v-container>
           </v-card>
         </v-col>

@@ -88,7 +88,23 @@
                 </v-card>
               </div>
             </v-card>
-          <br>
+            <br>
+            <!-- <v-card
+              width="800"
+              flat
+              color="transparent"
+              class="mx-auto"
+            >
+              <v-file-input
+                v-model="setImage"
+                label="投稿する画像"
+                prepend-icon="mdi-image"
+                placeholder="画像を選択してください"
+                accept="image/*"
+                @upload="uploadImage"
+              />
+            </v-card>
+          <br> -->
           <v-card
             width="320"
             flat
@@ -130,6 +146,8 @@ export default {
     title: '',
     content: '',
     rating: 0,
+    setImage: '',
+    input_Image: null,
     titleRules: [
       v => !!v || '',
       v => v.length <= 30 || '30文字以内で入力してください'
@@ -154,6 +172,21 @@ export default {
     }
   },
   methods: {
+    // uploadImage(file) {
+    //   this.setImage = file
+    //   if (file !== undefined && file !== null){
+    //     if (file.name.lastIndexOf(".") <= 0) {
+    //       return
+    //     }
+    //     const fr = new FileReader()
+    //     fr.readAsDataURL(file)
+    //     fr.addEventListener("load", () => {
+    //       this.input_Image = fr.result
+    //     })
+    //   } else {
+    //     this.input_Image = null
+    //   }
+    // },
     createPost() {
       const post = {
         title: this.title,
@@ -161,7 +194,15 @@ export default {
         content: this.content,
         user_id: this.user.id
       }
-      this.$emit('submit', post)
+      // const formData = new FormData()
+      // formData.append('image', this.setImage)
+      // const config = {
+      //   headers: {
+      //     'content-type': 'multipart/form-data'
+      //   }
+      // }
+      // this.$emit('submit', post, formData, config)
+      this.$emit('sumit', post)
     }
   }
 }
