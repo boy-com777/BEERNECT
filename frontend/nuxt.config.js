@@ -38,6 +38,7 @@ export default {
     '@nuxtjs/vuetify',
     '@nuxtjs/dotenv',
     '@nuxtjs/svg',
+    '@nuxtjs/moment',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
