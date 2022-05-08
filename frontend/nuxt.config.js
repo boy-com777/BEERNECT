@@ -25,6 +25,7 @@ export default {
     '@/plugins/authCheck',
     { src: '~/plugins/sessionStorage.js', ssr: false },
     { src: '~/plugins/infiniteloading.js', ssr: false },
+    '@/plugins/vuetify',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

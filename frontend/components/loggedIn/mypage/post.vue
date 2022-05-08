@@ -78,15 +78,21 @@
               /> -->
             </v-container>
             <v-container>
+              <v-footer
+                color="white"
+              >
+                <v-card
+                  class="footer"
+                  color="transparent"
+                  flat
+                >
                 <v-spacer></v-spacer>
-                <template #[`item.action`]="{ item }">
                 <v-icon
                   small
-                  @click="deleteItem(item)"
+                  @click="deletePost(post)"
                 >
-                  delete
+                  mdi-delete
                 </v-icon>
-                </template>
                 <!-- <v-icon
                   color="black"
                   size="20"
@@ -99,6 +105,8 @@
                 >
                   mdi-message-reply-text
                 </v-icon> -->
+                </v-card>
+              </v-footer>
             </v-container>
           </v-card>
         </v-col>
@@ -123,11 +131,6 @@ export default {
     return {
       icon: require("@/assets/images/other/default-user.png"),
       rating: 0,
-      headers: [
-        {
-          value: "action"
-        }
-      ]
     }
   },
   computed: {
@@ -136,13 +139,11 @@ export default {
     }
   },
   methods: {
-    async deleteItem(item) {
-      const response = confirm(" 削除しますか？")
+    async deletePost(post) {
+      const response = confirm("削除しますか？")
       if (response) {
-        await this.$axios.delete(`/v1/posts/${item.id}`)
-        const posts = this.user.posts.filter((post) => {
-          return post.id !== item.id
-        })
+        await this.$axios.delete(`/v1/posts/${post.id}`)
+        const posts = this.user.posts
         const newUser = {
           ...this.user,
           posts

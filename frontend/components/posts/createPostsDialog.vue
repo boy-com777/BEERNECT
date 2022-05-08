@@ -202,7 +202,7 @@ export default {
       //   }
       // }
       // this.$emit('submit', post, formData, config)
-      this.$emit('sumit', post)
+      this.$emit('submit', post)
     }
   }
 }
