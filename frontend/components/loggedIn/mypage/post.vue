@@ -77,6 +77,29 @@
                 size="80"
               /> -->
             </v-container>
+            <v-container>
+                <v-spacer></v-spacer>
+                <template #[`item.action`]="{ item }">
+                <v-icon
+                  small
+                  @click="deleteItem(item)"
+                >
+                  delete
+                </v-icon>
+                </template>
+                <!-- <v-icon
+                  color="black"
+                  size="20"
+                >
+                  mdi-thumb-up-outline
+                </v-icon>
+                <v-icon
+                  color="black"
+                  size="20"
+                >
+                  mdi-message-reply-text
+                </v-icon> -->
+            </v-container>
           </v-card>
         </v-col>
       </v-row>
@@ -99,7 +122,12 @@ export default {
   data () {
     return {
       icon: require("@/assets/images/other/default-user.png"),
-      rating: 0
+      rating: 0,
+      headers: [
+        {
+          value: "action"
+        }
+      ]
     }
   },
   computed: {
@@ -107,5 +135,21 @@ export default {
       return this.$store.state.auth.currentUser
     }
   },
+  methods: {
+    async deleteItem(item) {
+      const response = confirm(" 削除しますか？")
+      if (response) {
+        await this.$axios.delete(`/v1/posts/${item.id}`)
+        const posts = this.user.posts.filter((post) => {
+          return post.id !== item.id
+        })
+        const newUser = {
+          ...this.user,
+          posts
+        }
+        this.$store.dispatch('auth/setUser', newUser)
+      }
+    }
+  }
 }
 </script>
