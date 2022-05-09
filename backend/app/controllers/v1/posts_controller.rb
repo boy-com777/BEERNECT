@@ -1,7 +1,7 @@
 module V1
   class PostsController < ApplicationController
     def index
-      post = Post.all
+      post = Post.all.order(created_at: 'DESC')
       render json: post
     end
 
