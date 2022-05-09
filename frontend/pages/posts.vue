@@ -31,8 +31,8 @@
                         size="64"
                       >
                         <img
-                          v-if="user.avatar.url"
-                          :src="user.avatar.url"
+                          v-if="post.user.avatar.url"
+                          :src="post.user.avatar.url"
                         >
                         <img
                           v-else
@@ -93,11 +93,6 @@ export default{
   async fetch () {
     const posts = await this.$axios.$get('/v1/posts')
     this.posts = posts
-  },
-  computed: {
-    user() {
-      return this.$store.state.auth.currentUser
-    }
   },
 }
 </script>
