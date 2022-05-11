@@ -101,7 +101,7 @@
                 prepend-icon="mdi-image"
                 placeholder="画像を選択してください"
                 accept="image/*"
-                @upload="uploadImage"
+                @change="addImage"
               />
             </v-card>
           <br> -->
@@ -161,18 +161,9 @@ export default {
     user () {
       return this.$store.state.auth.currentUser
     },
-    params() {
-      return {
-        post: {
-          title: this.title,
-          recomend_score: this.rating,
-          content: this.content
-        }
-      }
-    }
   },
   methods: {
-    // uploadImage(file) {
+    // addImage(file) {
     //   this.setImage = file
     //   if (file !== undefined && file !== null){
     //     if (file.name.lastIndexOf(".") <= 0) {
@@ -188,19 +179,19 @@ export default {
     //   }
     // },
     createPost() {
-      const post = {
-        title: this.title,
-        recomend_score: this.rating,
-        content: this.content,
-        user_id: this.user.id
-      }
       // const formData = new FormData()
-      // formData.append('image', this.setImage)
+      // formData.append('post[image]', this.setImage)
       // const config = {
       //   headers: {
       //     'content-type': 'multipart/form-data'
       //   }
       // }
+      const post = {
+        title: this.title,
+        recomend_score: this.rating,
+        content: this.content,
+        user_id: this.user.id,
+      }
       // this.$emit('submit', post, formData, config)
       this.$emit('submit', post)
     }

@@ -170,16 +170,14 @@ export default {
       this.$refs.dlg.createPostsDialog = true
     },
     // async addPost(post, formData, config) {
-      async addPost(post) {
-      // const { data } = await this.$axios.$post('/v1/posts', { post, formData, config })
+    async addPost(post) {
+      // const { data } = await this.$axios.$post('/v1/posts', post, formData, config)
       const { data } = await this.$axios.$post('/v1/posts', { post })
       this.$store.dispatch('auth/setUser', {
         ...this.user,
         posts: [...this.user.posts, data]
       })
-      .then(()=> {
-        location.reload()
-      })
+      location.reload()
     }
   }
 }
