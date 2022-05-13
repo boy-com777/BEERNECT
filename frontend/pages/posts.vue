@@ -16,7 +16,6 @@
         >
           <v-card
             width="600"
-            height="400"
             flat
             outlined
             class="mx-auto"
@@ -32,8 +31,8 @@
                         size="64"
                       >
                         <img
-                          v-if="user.avatar.url"
-                          :src="user.avatar.url"
+                          v-if="post.user.avatar.url"
+                          :src="post.user.avatar.url"
                         >
                         <img
                           v-else
@@ -70,43 +69,6 @@
                 <li>飲んだ感想</li>
                   <h4>{{ post.content }}</h4>
               </v-card>
-              <!-- <br>
-              <v-img
-                :src="`${post.image}`"
-                tile
-                size="80"
-              /> -->
-            </v-container>
-            <v-container>
-              <v-footer
-                color="white"
-              >
-                <v-card
-                  class="footer"
-                  color="transparent"
-                  flat
-                >
-                <v-spacer></v-spacer>
-                <v-icon
-                  small
-                  @click="deletePost(post)"
-                >
-                  mdi-delete
-                </v-icon>
-                <!-- <v-icon
-                  color="black"
-                  size="20"
-                >
-                  mdi-thumb-up-outline
-                </v-icon>
-                <v-icon
-                  color="black"
-                  size="20"
-                >
-                  mdi-message-reply-text
-                </v-icon> -->
-                </v-card>
-              </v-footer>
             </v-container>
           </v-card>
         </v-col>
@@ -117,43 +79,20 @@
 
 <script>
 import StarRating from 'vue-star-rating'
-export default {
+export default{
   components: {
     StarRating
   },
-  props: {
-    posts: {
-      type: Array,
-      default: () => {}
-    }
-  },
+  layout: 'loggedIn',
   data () {
     return {
       icon: require("@/assets/images/other/default-user.png"),
-      rating: 0,
+      posts: []
     }
   },
-  computed: {
-    user() {
-      return this.$store.state.auth.currentUser
-    }
+  async fetch () {
+    const posts = await this.$axios.$get('/v1/posts')
+    this.posts = posts
   },
-  methods: {
-    async deletePost(post) {
-      const response = confirm("削除しますか？")
-      if (response) {
-        await this.$axios.delete(`/v1/posts/${post.id}`)
-        const posts = this.user.posts
-        const newUser = {
-          ...this.user,
-          posts
-        }
-        this.$store.dispatch('auth/setUser', newUser)
-        .then(() => {
-          location.reload()
-        })
-      }
-    }
-  }
 }
 </script>

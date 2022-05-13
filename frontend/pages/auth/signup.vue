@@ -26,9 +26,9 @@
             v-model="name"
             :rules="nameRules"
             :counter="max"
-            label="ユーザー名"
+            label="アカウント名"
             prepend-icon="mdi-account-circle"
-            placeholder="表示されるユーザー名"
+            placeholder="表示されるアカウント名"
             outlined
           />
           <v-text-field

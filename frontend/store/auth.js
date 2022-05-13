@@ -8,6 +8,9 @@ export const state = () => ({
     isLoggedIn: {
       appBarHeight: 56,
     },
+    myPage: {
+      appBarHeight: 80,
+    },
   },
 })
 

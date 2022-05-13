@@ -1871,6 +1871,16 @@
     defu "^6.0.0"
     eslint-webpack-plugin "^2.6.0"
 
+"@nuxtjs/moment@^1.6.1":
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/moment/-/moment-1.6.1.tgz#a4e98a861c9d21e34f983046143f4c9bb92bdb7c"
+  integrity sha512-Mo2/3NQB0XryMQuNCTVnAclrDvt9I9sr6dwVm56KhYCoiWTKgQ78tDV9tmrxw7lahw1IBwyPGhw+3pwkM4phAA==
+  dependencies:
+    moment "^2.25.3"
+    moment-locales-webpack-plugin "^1.2.0"
+    moment-timezone "^0.5.28"
+    moment-timezone-data-webpack-plugin "^1.3.0"
+
 "@nuxtjs/proxy@^2.1.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@nuxtjs/proxy/-/proxy-2.1.0.tgz#fa7715a11d237fa1273503c4e9e137dd1bf5575b"
@@ -7895,6 +7905,11 @@ marked@^4.0.10:
   resolved "https://registry.yarnpkg.com/marked/-/marked-4.0.14.tgz#7a3a5fa5c80580bac78c1ed2e3b84d7bd6fc3870"
   integrity sha512-HL5sSPE/LP6U9qKgngIIPTthuxC0jrfxpYMZ3LdGDD3vTnLs59m2Z7r6+LNDR3ToqEQdkKd6YaaEfJhodJmijQ==
 
+material-design-icons-iconfont@^6.7.0:
+  version "6.7.0"
+  resolved "https://registry.yarnpkg.com/material-design-icons-iconfont/-/material-design-icons-iconfont-6.7.0.tgz#55cf0f3d7e4c76e032855b7e810b6e30535eff3c"
+  integrity sha512-lSj71DgVv20kO0kGbs42icDzbRot61gEDBLQACzkUuznRQBUYmbxzEkGU6dNBb5fRWHMaScYlAXX96HQ4/cJWA==
+
 md5.js@^1.3.4:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/md5.js/-/md5.js-1.3.5.tgz#b5d07b8e3216e3e27cd728d72f70d1e6a342005f"
@@ -8210,6 +8225,33 @@ mkdirp@^1.0.3, mkdirp@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
+
+moment-locales-webpack-plugin@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/moment-locales-webpack-plugin/-/moment-locales-webpack-plugin-1.2.0.tgz#9af83876a44053706b868ceece5119584d10d7aa"
+  integrity sha512-QAi5v0OlPUP7GXviKMtxnpBAo8WmTHrUNN7iciAhNOEAd9evCOvuN0g1N7ThIg3q11GLCkjY1zQ2saRcf/43nQ==
+  dependencies:
+    lodash.difference "^4.5.0"
+
+moment-timezone-data-webpack-plugin@^1.3.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/moment-timezone-data-webpack-plugin/-/moment-timezone-data-webpack-plugin-1.5.0.tgz#229d98f36662adc41d7d30b154c81ec98e0c589d"
+  integrity sha512-eidUVGn6Fc8jR0tBf8xAhBR1C3jqknFJe0rfzThnglnJjmzqTXRYVTOeobUzWvlEfgTSu+b0W7GgOdqAWvGbYA==
+  dependencies:
+    find-cache-dir "^3.0.0"
+    make-dir "^3.0.0"
+
+moment-timezone@^0.5.28:
+  version "0.5.34"
+  resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.34.tgz#a75938f7476b88f155d3504a9343f7519d9a405c"
+  integrity sha512-3zAEHh2hKUs3EXLESx/wsgw6IQdusOT8Bxm3D9UrHPQR7zlMmzwybC8zHEM1tQ4LJwP7fcxrWr8tuBg05fFCbg==
+  dependencies:
+    moment ">= 2.9.0"
+
+"moment@>= 2.9.0", moment@^2.25.3:
+  version "2.29.3"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.3.tgz#edd47411c322413999f7a5940d526de183c031f3"
+  integrity sha512-c6YRvhEo//6T2Jz/vVtYzqBzwvPT95JBQ+smCytzf7c50oMZRsR/a4w88aD34I+/QVSfnoAnSBFPJHItlOMJVw==
 
 morgan@^1.10.0, morgan@^1.8.2:
   version "1.10.0"
@@ -12290,6 +12332,13 @@ vue-server-renderer@^2.6.12, vue-server-renderer@^2.6.14:
     serialize-javascript "^3.1.0"
     source-map "0.5.6"
 
+vue-star-rating@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/vue-star-rating/-/vue-star-rating-1.7.0.tgz#07576aa1a83d54d4e9ea80eebccf058ff3c868b6"
+  integrity sha512-2qdONqnIlvFzJoallfr7VuFRB6hBzYgBVEbXC3yYZz2TfMhx36WtYQ5p7JRjW+pzZx2PGQYZ75UFoBE0jwIANw==
+  dependencies:
+    vue "^2.3.3"
+
 vue-style-loader@^4.1.0, vue-style-loader@^4.1.3:
   version "4.1.3"
   resolved "https://registry.yarnpkg.com/vue-style-loader/-/vue-style-loader-4.1.3.tgz#6d55863a51fa757ab24e89d9371465072aa7bc35"
@@ -12319,7 +12368,7 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
-vue@^2.6.12, vue@^2.6.14:
+vue@^2.3.3, vue@^2.6.12, vue@^2.6.14:
   version "2.6.14"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.14.tgz#e51aa5250250d569a3fbad3a8a5a687d6036e235"
   integrity sha512-x2284lgYvjOMj3Za7kqzRcUSxBboHqtgRE2zlos1qWaOye5yUmHn42LB1250NJBLRwEcdrB0JRwyPTEPhfQjiQ==

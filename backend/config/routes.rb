@@ -70,5 +70,8 @@ Rails.application.routes.draw do
     get 'beers/kagoshima'
     get 'beers/okinawa'
     resources :beers, only: %i[index show]
+
+    # post 関連
+    resources :posts, only: %i[index show create update destroy]
   end
 end
