@@ -29,7 +29,7 @@
                   {{ beer.beer_name }}
                 </v-card-title>
                 <v-divider></v-divider>
-                <div>レビュー点数</div>
+                <!-- <div>レビュー点数</div> -->
                 <v-card-actions>
                   <v-btn
                     width="300"
@@ -48,145 +48,23 @@
                     </v-icon>
                   </v-btn>
                 </v-card-actions>
-                <br>
-                <v-row
-                  justify="center"
-                >
-                  <v-dialog
-                    v-model="reviewDialog"
-                    width="1000"
+                <!-- <v-card-actions>
+                  <v-btn
+                    width="300"
+                    rounded
+                    outlined
+                    dark
+                    color="success"
+                    class="white--text"
                   >
-                    <template #activator="{ on, attrs }">
-                      <v-btn
-                        width="300"
-                        rounded
-                        outlined
-                        dark
-                        color="success"
-                        class="white--text"
-                        v-bind="attrs"
-                        v-on="on"
-                      >
-                        レビューを書く
-                        <v-icon
-                          right
-                        >
-                          mdi-lead-pencil
-                        </v-icon>
-                      </v-btn>
-                    </template>
-                    <v-card>
-                      <v-card-title
-                        class="text-h6 success font-weight-bold"
-                      >
-                        レビューを書く
-                      </v-card-title>
-                      <v-form
-                        v-model="isValid"
-                      >
-                        <v-card
-                          width="900"
-                          flat
-                          color="transparent"
-                          class="mx-auto"
-                        >
-                          <div
-                            class="text-h6 font-weight-bold"
-                          >
-                            タイトル
-                            <v-card
-                              width="800"
-                              flat
-                              color="transparent"
-                              class="mx-auto"
-                            >
-                              <v-text-field
-                                v-model="title"
-                                :rules="titleRules"
-                                :counter="30"
-                                outlined
-                                required
-                              />
-                            </v-card>
-                          </div>
-                        </v-card>
-                        <v-card
-                          width="900"
-                          flat
-                          color="transparent"
-                          class="mx-auto"
-                        >
-                          <div
-                            class="text-h6 font-weight-bold"
-                          >
-                            評価
-                            <v-card
-                              width="800"
-                              flat
-                              color="transparent"
-                              class="mx-auto"
-                            >
-                              <star-rating v-model="rating"/>
-                            </v-card>
-                          </div>
-                        </v-card>
-                        <br>
-                        <v-card
-                          width="900"
-                          flat
-                          color="transparent"
-                          class="mx-auto"
-                        >
-                          <div
-                            class="text-h6 font-weight-bold"
-                          >
-                            レビュー内容
-                            <v-card
-                              width="800"
-                              flat
-                              color="transparent"
-                              class="mx-auto"
-                            >
-                              <v-textarea
-                                v-model="content"
-                                :rules="contentRules"
-                                :counter="200"
-                                outlined
-                                required
-                              />
-                            </v-card>
-                          </div>
-                        </v-card>
-                        <br>
-                        <v-card
-                          width="320"
-                          flat
-                          color="transparent"
-                          class="mx-auto"
-                        >
-                          <v-card-actions>
-                            <v-btn
-                              :disabled="!isValid"
-                              rounded
-                              outlined
-                              block
-                              color="success"
-                              class="white--text"
-                            >
-                              投稿する
-                              <v-icon
-                                right
-                              >
-                                mdi-lead-pencil
-                              </v-icon>
-                            </v-btn>
-                          </v-card-actions>
-                        </v-card>
-                      </v-form>
-                    </v-card>
-                  </v-dialog>
-                </v-row>
-                <br>
+                    レビューを書く
+                    <v-icon
+                      right
+                    >
+                      mdi-pencil
+                    </v-icon>
+                  </v-btn>
+                </v-card-actions>
                 <v-card-actions>
                   <v-btn
                     width="300"
@@ -203,7 +81,7 @@
                       mdi-message-text
                     </v-icon>
                   </v-btn>
-                </v-card-actions>
+                </v-card-actions> -->
               </div>
               <v-avatar
                 class="ma-3"
@@ -223,11 +101,7 @@
 </template>
 
 <script>
-import StarRating from 'vue-star-rating'
 export default {
-  components: {
-    StarRating
-  },
   props: {
     beers: {
       type: Array,
@@ -236,19 +110,6 @@ export default {
   },
   data () {
     return {
-      reviewDialog: false,
-      isValid: false,
-      title: '',
-      rating: 0,
-      content: '',
-      titleRules: [
-        v => !!v || '',
-        v => v.length <= 30 || '30文字以内で入力してください'
-      ],
-      contentRules: [
-        v => !!v || '',
-        v => v.length <= 200 || '200文字以内で入力してください'
-      ]
     }
   },
   methods: {
