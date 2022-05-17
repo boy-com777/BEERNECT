@@ -29,7 +29,7 @@
                   {{ beer.beer_name }}
                 </v-card-title>
                 <v-divider></v-divider>
-                <div>レビュー点数</div>
+                <!-- <div>レビュー点数</div> -->
                 <v-card-actions>
                   <v-btn
                     width="300"
@@ -48,7 +48,7 @@
                     </v-icon>
                   </v-btn>
                 </v-card-actions>
-                <v-card-actions>
+                <!-- <v-card-actions>
                   <v-btn
                     width="300"
                     rounded
@@ -81,7 +81,7 @@
                       mdi-message-text
                     </v-icon>
                   </v-btn>
-                </v-card-actions>
+                </v-card-actions> -->
               </div>
               <v-avatar
                 class="ma-3"
@@ -107,6 +107,12 @@ export default {
       type: Array,
       default: () => {}
     }
+  },
+  data () {
+    return {
+    }
+  },
+  methods: {
   }
 }
 </script>

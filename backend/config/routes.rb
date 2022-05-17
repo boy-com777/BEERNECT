@@ -73,5 +73,8 @@ Rails.application.routes.draw do
 
     # post 関連
     resources :posts, only: %i[index show create update destroy]
+
+    # reviews 関連
+    resources :posts, only: %i[index create destroy]
   end
 end

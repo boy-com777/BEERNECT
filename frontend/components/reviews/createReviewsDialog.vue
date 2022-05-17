@@ -3,14 +3,14 @@
     justify="center"
   >
     <v-dialog
-      v-model="createPostsDialog"
+      v-model="createReviewsDialog"
       width="1000"
     >
       <v-card>
         <v-card-title
           class="text-h6 success font-weight-bold"
         >
-          飲んだビールについて感想を書く
+          レビューを書く
         </v-card-title>
           <v-form
             v-model="isValid"
@@ -50,7 +50,7 @@
               <div
                 class="text-h6 font-weight-bold"
               >
-                おすすめ度
+                評価
                 <v-card
                   width="800"
                   flat
@@ -71,7 +71,7 @@
               <div
                 class="text-h6 font-weight-bold"
               >
-                投稿内容
+                レビュー内容
                 <v-card
                   width="800"
                   flat
@@ -89,22 +89,6 @@
               </div>
             </v-card>
             <br>
-            <!-- <v-card
-              width="800"
-              flat
-              color="transparent"
-              class="mx-auto"
-            >
-              <v-file-input
-                v-model="setImage"
-                label="投稿する画像"
-                prepend-icon="mdi-image"
-                placeholder="画像を選択してください"
-                accept="image/*"
-                @change="addImage"
-              />
-            </v-card>
-          <br> -->
           <v-card
             width="320"
             flat
@@ -119,7 +103,7 @@
                 block
                 color="success"
                 class="white--text"
-                @click="createPost"
+                @click="createReview"
               >
                 <v-icon left>
                   mdi-lead-pencil
@@ -146,8 +130,6 @@ export default {
     title: '',
     content: '',
     rating: 0,
-    setImage: '',
-    input_Image: null,
     titleRules: [
       v => !!v || '',
       v => v.length <= 30 || '30文字以内で入力してください'
@@ -163,37 +145,14 @@ export default {
     },
   },
   methods: {
-    // addImage(file) {
-    //   this.setImage = file
-    //   if (file !== undefined && file !== null){
-    //     if (file.name.lastIndexOf(".") <= 0) {
-    //       return
-    //     }
-    //     const fr = new FileReader()
-    //     fr.readAsDataURL(file)
-    //     fr.addEventListener("load", () => {
-    //       this.input_Image = fr.result
-    //     })
-    //   } else {
-    //     this.input_Image = null
-    //   }
-    // },
-    createPost() {
-      // const formData = new FormData()
-      // formData.append('post[image]', this.setImage)
-      // const config = {
-      //   headers: {
-      //     'content-type': 'multipart/form-data'
-      //   }
-      // }
-      const post = {
+    createReview() {
+      const review = {
         title: this.title,
-        recomend_score: this.rating,
+        review_score: this.rating,
         content: this.content,
         user_id: this.user.id,
       }
-      // this.$emit('submit', post, formData, config)
-      this.$emit('submit', post)
+      this.$emit('submit', review)
     }
   }
 }

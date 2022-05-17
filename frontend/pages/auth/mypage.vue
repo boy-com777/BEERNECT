@@ -64,10 +64,10 @@
               class="white--text"
               to="/auth/edit"
             >
-              <v-icon left>
-                mdi-pencil
-              </v-icon>
               アカウント編集
+              <v-icon right>
+                mdi-lead-pencil
+              </v-icon>
             </v-btn>
           </v-card>
         </v-tab-item>
@@ -94,10 +94,10 @@
                   class="white--text"
                   @click="openDisplay"
                 >
-                  <v-icon left>
+                  飲んだビールについて感想を書く
+                  <v-icon right>
                     mdi-lead-pencil
                   </v-icon>
-                  飲んだビールについて感想を書く
                 </v-btn>
                 <create-posts-dialog ref="dlg" @submit="addPost"/>
               </v-card-actions>
