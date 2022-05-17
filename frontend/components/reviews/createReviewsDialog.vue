@@ -3,7 +3,7 @@
     justify="center"
   >
     <v-dialog
-      v-model="createPostsDialog"
+      v-model="createReviewsDialog"
       width="1000"
     >
       <v-card>
@@ -130,8 +130,6 @@ export default {
     title: '',
     content: '',
     rating: 0,
-    setImage: '',
-    input_Image: null,
     titleRules: [
       v => !!v || '',
       v => v.length <= 30 || '30文字以内で入力してください'
