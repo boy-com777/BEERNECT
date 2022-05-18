@@ -174,14 +174,7 @@ export default {
           'content-type': 'multipart/form-data'
         }
       }
-      // const post = {
-      //   title: this.title,
-      //   recomend_score: this.rating,
-      //   content: this.content,
-      //   user_id: this.user.id,
-      // }
       this.$emit('submit', formData, config)
-      // this.$emit('submit', post)
     }
   }
 }
