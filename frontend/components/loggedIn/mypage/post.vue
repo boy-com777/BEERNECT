@@ -15,8 +15,8 @@
           cols="12"
         >
           <v-card
+            v-if="post"
             width="600"
-            height="400"
             flat
             outlined
             class="mx-auto"
@@ -70,12 +70,29 @@
                 <li>飲んだ感想</li>
                   <h4>{{ post.content }}</h4>
               </v-card>
-              <!-- <br>
-              <v-img
-                :src="`${post.image}`"
-                tile
-                size="80"
-              /> -->
+              <br>
+              <template
+                v-if="post.image.url"
+              >
+                <v-card
+                  flat
+                  color="transparent"
+                  class="mx-auto"
+                >
+                  <v-layout
+                    justify-center
+                  >
+                    <v-avatar
+                      tile
+                      size="256"
+                    >
+                      <v-img
+                        :src="`${post.image.url}`"
+                      />
+                    </v-avatar>
+                  </v-layout>
+                </v-card>
+              </template>
             </v-container>
             <v-container>
               <v-footer

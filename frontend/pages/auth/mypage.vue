@@ -1,5 +1,4 @@
 <template>
-  <!-- <v-app> -->
     <v-card
       flat
       color="transparent"
@@ -103,7 +102,11 @@
               </v-card-actions>
             </v-card>
           </v-toolbar>
-          <post :posts="user.posts"/>
+          <div
+            v-if="user"
+          >
+            <post :posts="user.posts"/>
+          </div>
         </v-tab-item>
         <v-tab-item
           class="tab-item"
@@ -122,7 +125,6 @@
         </v-tab-item>
       </v-tabs>
     </v-card>
-  <!-- </v-app> -->
 </template>
 
 <script>
@@ -169,10 +171,8 @@ export default {
     openDisplay() {
       this.$refs.dlg.createPostsDialog = true
     },
-    // async addPost(post, formData, config) {
-    async addPost(post) {
-      // const { data } = await this.$axios.$post('/v1/posts', post, formData, config)
-      const { data } = await this.$axios.$post('/v1/posts', { post })
+    async addPost(formData, config) {
+      const { data } = await this.$axios.$post('/v1/posts', formData, config)
       this.$store.dispatch('auth/setUser', {
         ...this.user,
         posts: [...this.user.posts, data]

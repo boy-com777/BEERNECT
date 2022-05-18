@@ -69,6 +69,28 @@
                 <li>飲んだ感想</li>
                   <h4>{{ post.content }}</h4>
               </v-card>
+              <template
+                v-if="post.image.url"
+              >
+                <v-card
+                  flat
+                  color="transparent"
+                  class="mx-auto"
+                >
+                  <v-layout
+                    justify-center
+                  >
+                    <v-avatar
+                      tile
+                      size="256"
+                    >
+                      <v-img
+                        :src="`${post.image.url}`"
+                      />
+                    </v-avatar>
+                  </v-layout>
+                </v-card>
+              </template>
             </v-container>
           </v-card>
         </v-col>
