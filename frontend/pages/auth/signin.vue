@@ -123,6 +123,7 @@ export default {
       if (this.error === null) {
         this.$router.push('/auth/mypage')
       }
+      location.reload()
     }
   }
 }

@@ -89,7 +89,7 @@
               </div>
             </v-card>
             <br>
-            <!-- <v-card
+            <v-card
               width="800"
               flat
               color="transparent"
@@ -101,10 +101,9 @@
                 prepend-icon="mdi-image"
                 placeholder="画像を選択してください"
                 accept="image/*"
-                @change="addImage"
               />
             </v-card>
-          <br> -->
+          <br>
           <v-card
             width="320"
             flat
@@ -163,37 +162,26 @@ export default {
     },
   },
   methods: {
-    // addImage(file) {
-    //   this.setImage = file
-    //   if (file !== undefined && file !== null){
-    //     if (file.name.lastIndexOf(".") <= 0) {
-    //       return
-    //     }
-    //     const fr = new FileReader()
-    //     fr.readAsDataURL(file)
-    //     fr.addEventListener("load", () => {
-    //       this.input_Image = fr.result
-    //     })
-    //   } else {
-    //     this.input_Image = null
-    //   }
-    // },
     createPost() {
-      // const formData = new FormData()
-      // formData.append('post[image]', this.setImage)
-      // const config = {
-      //   headers: {
-      //     'content-type': 'multipart/form-data'
-      //   }
-      // }
-      const post = {
-        title: this.title,
-        recomend_score: this.rating,
-        content: this.content,
-        user_id: this.user.id,
+      const formData = new FormData()
+      formData.append('post[title]', this.title)
+      formData.append('post[recomend_score]', this.rating)
+      formData.append('post[content]', this.content)
+      formData.append('post[user_id]', this.user.id)
+      formData.append('post[image]', this.setImage)
+      const config = {
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
       }
-      // this.$emit('submit', post, formData, config)
-      this.$emit('submit', post)
+      // const post = {
+      //   title: this.title,
+      //   recomend_score: this.rating,
+      //   content: this.content,
+      //   user_id: this.user.id,
+      // }
+      this.$emit('submit', formData, config)
+      // this.$emit('submit', post)
     }
   }
 }
