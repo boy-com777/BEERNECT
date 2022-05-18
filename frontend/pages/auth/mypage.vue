@@ -103,7 +103,11 @@
               </v-card-actions>
             </v-card>
           </v-toolbar>
-          <post :posts="user.posts"/>
+          <div
+            v-if="user"
+          >
+            <post :posts="user.posts"/>
+          </div>
         </v-tab-item>
         <v-tab-item
           class="tab-item"
@@ -170,9 +174,7 @@ export default {
       this.$refs.dlg.createPostsDialog = true
     },
     async addPost(formData, config) {
-    // async addPost(post) {
       const { data } = await this.$axios.$post('/v1/posts', formData, config)
-      // const { data } = await this.$axios.$post('/v1/posts', { post })
       this.$store.dispatch('auth/setUser', {
         ...this.user,
         posts: [...this.user.posts, data]

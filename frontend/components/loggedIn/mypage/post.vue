@@ -1,5 +1,4 @@
 <template>
-  <v-app>
   <v-card
     width="800"
     flat
@@ -84,7 +83,7 @@
                   >
                     <v-avatar
                       tile
-                      size="128"
+                      size="256"
                     >
                       <v-img
                         :src="`${post.image.url}`"
@@ -130,7 +129,6 @@
       </v-row>
     </v-container>
   </v-card>
-  </v-app>
 </template>
 
 <script>
