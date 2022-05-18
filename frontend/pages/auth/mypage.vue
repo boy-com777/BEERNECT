@@ -1,5 +1,4 @@
 <template>
-  <!-- <v-app> -->
     <v-card
       flat
       color="transparent"
@@ -126,7 +125,6 @@
         </v-tab-item>
       </v-tabs>
     </v-card>
-  <!-- </v-app> -->
 </template>
 
 <script>

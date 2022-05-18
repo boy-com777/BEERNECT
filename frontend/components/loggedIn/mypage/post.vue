@@ -15,6 +15,7 @@
           cols="12"
         >
           <v-card
+            v-if="post"
             width="600"
             flat
             outlined
