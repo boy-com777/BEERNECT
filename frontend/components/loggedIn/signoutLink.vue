@@ -18,7 +18,7 @@ export default {
       await firebase.auth().signOut()
       this.$store.dispatch('auth/setUser', null)
       this.$store.dispatch('auth/setLoginState', false)
-      this.$router.push('/auth/signin')
+      this.$router.push('/')
     }
   }
 }

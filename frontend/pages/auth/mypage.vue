@@ -49,12 +49,25 @@
           <profile />
           <br>
           <v-card
+            v-if="user"
             width="320"
             flat
             color="transparent"
             class="mx-auto"
           >
             <v-btn
+              v-if="`${user.email}` === guest"
+              rounded
+              block
+              dark
+              outlined
+              color="success"
+              class="white--text"
+            >
+              ゲストユーザーのため編集不可です
+            </v-btn>
+            <v-btn
+              v-else
               rounded
               block
               dark
@@ -146,7 +159,8 @@ export default {
   layout: 'loggedIn',
   data () {
     return {
-      posts: []
+      posts: [],
+      guest: process.env.GUEST_EMAIL
     }
   },
   fetch({
