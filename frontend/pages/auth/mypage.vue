@@ -49,12 +49,25 @@
           <profile />
           <br>
           <v-card
+            v-if="user"
             width="320"
             flat
             color="transparent"
             class="mx-auto"
           >
             <v-btn
+              v-if="`${user.name}` === 'ゲストユーザー'"
+              rounded
+              block
+              dark
+              outlined
+              color="success"
+              class="white--text"
+            >
+              {{ user.name }} のため編集不可です
+            </v-btn>
+            <v-btn
+              v-else
               rounded
               block
               dark
