@@ -56,7 +56,7 @@
             class="mx-auto"
           >
             <v-btn
-              v-if="`${user.name}` === 'ゲストユーザー'"
+              v-if="`${user.email}` === guest"
               rounded
               block
               dark
@@ -64,7 +64,7 @@
               color="success"
               class="white--text"
             >
-              {{ user.name }} のため編集不可です
+              ゲストユーザーのため編集不可です
             </v-btn>
             <v-btn
               v-else
@@ -159,7 +159,8 @@ export default {
   layout: 'loggedIn',
   data () {
     return {
-      posts: []
+      posts: [],
+      guest: process.env.GUEST_EMAIL
     }
   },
   fetch({
