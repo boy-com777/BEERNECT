@@ -9,9 +9,22 @@ module V1
       render json: users
     end
 
+    # def show
+    #   user = User.find(params[:id])
+    #   render json: user
+    # end
+
     def show
-      user = User.find(params[:id])
-      render json: user
+      user = User.includes(
+        :following,
+        :followers
+      )
+      render json: user.as_json(
+        include: [
+          :following,
+          :followers
+        ]
+      )
     end
 
     def create
