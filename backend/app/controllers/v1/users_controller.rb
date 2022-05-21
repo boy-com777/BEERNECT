@@ -18,7 +18,7 @@ module V1
       user = User.includes(
         :following,
         :followers
-      )
+      ).find(params[:id])
       render json: user.as_json(
         include: [
           :following,
