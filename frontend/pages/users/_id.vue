@@ -11,7 +11,7 @@
       >
         <v-card>
           <v-toolbar
-            color="cyan darken-1"
+            color="myorange lighten-1"
             dark
             flat
           >
@@ -93,7 +93,10 @@
                     </v-btn>
                     <v-btn
                       v-else
-                      color="white--text red"
+                      color="red"
+                      rounded
+                      outlined
+                      class="white--text"
                       @click="unfollow"
                     >
                       フォロー解除する
@@ -146,10 +149,26 @@ export default {
       setData: 'otherUser/setData'
     }),
     async follow() {
-
+      await this.$axios.$post('/v1/relationships', {
+        user_id: this.user.id,
+        follow_id: this.otherUser.id
+      })
+      await this.$axios.$get(`/v1/users/${this.$route.params.id}`)
+        .then(response => {
+          this.setData(response)
+        })
     },
     async unfollow() {
-
+      await this.$axios.$delete('/v1/relationships', {
+        params: {
+          user_id: this.user.id,
+          follow_id: this.otherUser.id
+        }
+      })
+      await this.$axios.$get(`/v1/users/${this.$route.params.id}`)
+        .then(response => {
+          this.setData(response)
+        })
     }
   }
 }
