@@ -1,6 +1,7 @@
 export const state = () => ({
   loggedIn: false,
   currentUser: {},
+  data: {},
   styles: {
     beforeLogin: {
       appBarHeight: 56,
@@ -21,6 +22,9 @@ export const mutations = {
   setLoginState(state, payload) {
     state.loggedIn = payload
   },
+  setData(state, payload) {
+    state.data = payload
+  },
 }
 
 export const actions = {
@@ -35,5 +39,8 @@ export const actions = {
 export const getters = {
   currentUser(state) {
     return state.currentUser
+  },
+  data(state) {
+    return state.data
   },
 }

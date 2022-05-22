@@ -66,11 +66,11 @@
                   <v-row>
                     <v-col>
                       <p>フォロー</p>
-                      <p>{{ otherUser.following.length }}人</p>
+                      <!-- <p>{{ otherUser.following.length }}人</p> -->
                     </v-col>
                     <v-col>
                       <p>フォロワー</p>
-                      <p>{{ otherUser.followers.length }}人</p>
+                      <!-- <p>{{ otherUser.followers.length }}人</p> -->
                     </v-col>
                   </v-row>
                 </v-col>
@@ -83,14 +83,17 @@
                   >
                     <v-btn
                       v-if="!otherUser.isFollowed"
-                      coloer="success"
+                      color="success"
+                      rounded
+                      outlined
+                      class="white--text"
                       @click="follow"
                     >
                       フォローする
                     </v-btn>
                     <v-btn
                       v-else
-                      collor="white--text red"
+                      color="white--text red"
                       @click="unfollow"
                     >
                       フォロー解除する
@@ -107,16 +110,60 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
+  layout: 'loggedIn',
   data () {
     return {
       icon: require("@/assets/images/other/default-user.png")
     }
   },
+  // fetch({
+  //   store,
+  //   redirect
+  // }) {
+  //   store.watch(
+  //     state => state.auth.currentUser,
+  //     (newUser, oldUser) => {
+  //       if (!newUser) {
+  //         return redirect('/auth/signin')
+  //       }
+  //     }
+  //   )
+  // },
+  async fetch({ $axios, params, store }) {
+    await $axios.$get(`/v1/users/${params.id}`)
+    .then(response => {
+      store.dispatch('otherUser/setData', response)
+    })
+  },
   computed: {
     user() {
       return this.$store.state.auth.currentUser
+    },
+    ...mapGetters({
+      otherUser: 'otherUser/user'
+    }),
+    myselfCheck () {
+      if (this.$store.getters['auth/data'] === undefined) {
+        return false
+      } else if (this.$store.getters['auth/data'].id === this.$store.getters['otherUser/data'].id) {
+          return false
+        } else {
+          return true
+        }
     }
   },
+  methods: {
+    ...mapActions({
+      setData: 'otherUser/setData'
+    }),
+    async follow() {
+
+    },
+    async unfollow() {
+
+    }
+  }
 }
 </script>
