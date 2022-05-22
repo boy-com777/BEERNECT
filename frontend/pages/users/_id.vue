@@ -66,11 +66,11 @@
                   <v-row>
                     <v-col>
                       <p>フォロー</p>
-                      <!-- <p>{{ otherUser.following.length }}人</p> -->
+                      <p>{{ otherUser.following.length }}人</p>
                     </v-col>
                     <v-col>
                       <p>フォロワー</p>
-                      <!-- <p>{{ otherUser.followers.length }}人</p> -->
+                      <p>{{ otherUser.followers.length }}人</p>
                     </v-col>
                   </v-row>
                 </v-col>
@@ -118,19 +118,6 @@ export default {
       icon: require("@/assets/images/other/default-user.png")
     }
   },
-  // fetch({
-  //   store,
-  //   redirect
-  // }) {
-  //   store.watch(
-  //     state => state.auth.currentUser,
-  //     (newUser, oldUser) => {
-  //       if (!newUser) {
-  //         return redirect('/auth/signin')
-  //       }
-  //     }
-  //   )
-  // },
   async fetch({ $axios, params, store }) {
     await $axios.$get(`/v1/users/${params.id}`)
     .then(response => {
@@ -142,7 +129,7 @@ export default {
       return this.$store.state.auth.currentUser
     },
     ...mapGetters({
-      otherUser: 'otherUser/user'
+      otherUser: 'otherUser/data'
     }),
     myselfCheck () {
       if (this.$store.getters['auth/data'] === undefined) {

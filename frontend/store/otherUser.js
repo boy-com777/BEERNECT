@@ -1,21 +1,23 @@
 export const state = () => ({
-  user: {},
+  users: {},
   data: {},
 })
 
 export const getters = {
-  user: (state) => state.user,
+  users(state) {
+    return state.users
+  },
   data(state) {
     return state.data
   },
 }
 
 export const mutations = {
-  setUser(state, user) {
-    state.user = user
+  setUsers(state, users) {
+    state.users = users
   },
-  setData(state, payload) {
-    state.data = payload
+  setData(state, auth) {
+    state.data = auth
   },
 }
 
