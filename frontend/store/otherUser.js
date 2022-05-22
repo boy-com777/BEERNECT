@@ -1,6 +1,7 @@
 export const state = () => ({
   users: {},
   data: {},
+  otherUser: {},
 })
 
 export const getters = {
@@ -10,6 +11,9 @@ export const getters = {
   data(state) {
     return state.data
   },
+  otherUser(state) {
+    return state.otherUser
+  },
 }
 
 export const mutations = {
@@ -18,6 +22,9 @@ export const mutations = {
   },
   setData(state, auth) {
     state.data = auth
+  },
+  setOtherUser(state, payload) {
+    state.otherUser = payload
   },
 }
 
@@ -32,5 +39,8 @@ export const actions = {
       })
     }
     commit('setData', auth)
+  },
+  setOtherUser(context, data) {
+    context.commit('setOtherUser', data)
   },
 }

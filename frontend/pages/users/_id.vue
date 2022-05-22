@@ -9,7 +9,9 @@
         lg="4"
         sm="8"
       >
-        <v-card>
+        <v-card
+          v-if="otherUser"
+        >
           <v-toolbar
             color="myorange lighten-1"
             dark
@@ -58,6 +60,15 @@
                     justify="center"
                   >
                     <p>{{ otherUser.profile }}</p>
+                  </v-row>
+                </v-col>
+                <v-col
+                  cols="12"
+                >
+                  <v-row
+                    justify="center"
+                  >
+                    <p>{{ otherUser.favorite_beer }}が好きです！！</p>
                   </v-row>
                 </v-col>
                 <v-col
@@ -130,6 +141,9 @@ export default {
   computed: {
     user() {
       return this.$store.state.auth.currentUser
+    },
+    otherUser() {
+      return this.$store.state.otherUser.otherUser
     },
     ...mapGetters({
       otherUser: 'otherUser/data'
