@@ -173,7 +173,7 @@ export default {
         })
     },
     async unfollow() {
-      await this.$axios.$delete('/v1/relationships', {
+      await this.$axios.$delete('/v1/relationships/delete', {
         params: {
           user_id: this.user.id,
           follow_id: this.otherUser.id
