@@ -44,6 +44,7 @@
                         {{ follow.name }}
                       </nuxt-link>
                     </h4>
+                    <h6>{{ follow.profile }}</h6>
                   </v-col>
                 </v-row>
               </v-container>

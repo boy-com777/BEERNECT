@@ -133,7 +133,11 @@
         <v-tab-item
           class="tab-item"
         >
-          <follower />
+          <div
+            v-if="user"
+          >
+            <follower :followers="user.followers"/>
+          </div>
         </v-tab-item>
         <v-tab-item
           class="tab-item"
@@ -165,6 +169,7 @@ export default {
     return {
       posts: [],
       following: [],
+      followers: [],
       guest: process.env.GUEST_EMAIL
     }
   },
