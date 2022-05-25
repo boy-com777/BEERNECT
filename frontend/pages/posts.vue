@@ -44,7 +44,18 @@
                       cols="8"
                     >
                       <h4>{{ post.title }}</h4>
-                      <h6>{{ post.username }} が {{ $moment(post.created_at).format('YYYY年MM月DD日 HH時mm分') }} に投稿</h6>
+                      <nuxt-link
+                        v-if="`${post.user_id}`!==`${user.id}`"
+                        :to="`users/${post.user_id}`"
+                      >
+                        <h6>{{ post.username }} が {{ $moment(post.created_at).format('YYYY年MM月DD日 HH時mm分') }} に投稿</h6>
+                      </nuxt-link>
+                      <nuxt-link
+                        v-else
+                        to="/auth/mypage"
+                      >
+                        <h6>{{ post.username }} が {{ $moment(post.created_at).format('YYYY年MM月DD日 HH時mm分') }} に投稿</h6>
+                      </nuxt-link>
                     </v-col>
                   </v-row>
                 </v-container>
@@ -115,6 +126,11 @@ export default{
   async fetch () {
     const posts = await this.$axios.$get('/v1/posts')
     this.posts = posts
+  },
+  computed: {
+    user() {
+      return this.$store.state.auth.currentUser
+    }
   },
 }
 </script>
