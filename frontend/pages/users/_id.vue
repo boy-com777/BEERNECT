@@ -34,8 +34,8 @@
                       size="62"
                     >
                       <img
-                        v-if="otherUser.avatar_url"
-                        :src="otherUser"
+                        v-if="otherUser.avatar.url"
+                        :src="otherUser.avatar.url"
                       >
                       <img
                         v-else
