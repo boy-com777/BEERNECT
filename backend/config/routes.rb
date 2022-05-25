@@ -71,10 +71,13 @@ Rails.application.routes.draw do
     get 'beers/okinawa'
     resources :beers, only: %i[index show]
 
-    # post 関連
+    # posts 関連
     resources :posts, only: %i[index show create update destroy]
 
     # reviews 関連
     resources :posts, only: %i[index create destroy]
+
+    # relationships 関連
+    resources :relationships, only: %i[create destroy]
   end
 end
