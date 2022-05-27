@@ -142,7 +142,8 @@
         <v-tab-item
           class="tab-item"
         >
-          <memory />
+          <memory @submit="addMemory"/>
+          <memory-list :memories="user.memories" />
         </v-tab-item>
       </v-tabs>
     </v-card>
@@ -155,6 +156,7 @@ import follow from '~/components/loggedIn/mypage/follow'
 import follower from '~/components/loggedIn/mypage/follower'
 import memory from '~/components/loggedIn/mypage/memory'
 import createPostsDialog from '~/components/posts/createPostsDialog'
+import memoryList from '~/components/loggedIn/mypage/memoryList'
 export default {
   components: {
     profile,
@@ -162,7 +164,8 @@ export default {
     follow,
     follower,
     memory,
-    createPostsDialog
+    createPostsDialog,
+    memoryList
   },
   layout: 'loggedIn',
   data () {
@@ -200,6 +203,14 @@ export default {
       this.$store.dispatch('auth/setUser', {
         ...this.user,
         posts: [...this.user.posts, data]
+      })
+      location.reload()
+    },
+    async addMemory(memory) {
+      const { data } = await this.$axios.$post('/v1/memories', memory)
+      this.$store.dispatch('auth/setUser', {
+        ...this.user,
+        memories: [...this.user.memories, data]
       })
       location.reload()
     }

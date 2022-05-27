@@ -79,5 +79,8 @@ Rails.application.routes.draw do
 
     # relationships 関連
     resources :relationships, only: %i[create destroy]
+
+    # memories 関連
+    resources :memories, only: %i[index create]
   end
 end
