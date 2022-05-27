@@ -142,7 +142,7 @@
         <v-tab-item
           class="tab-item"
         >
-          <memory />
+          <memory @submit="addMemory"/>
         </v-tab-item>
       </v-tabs>
     </v-card>
@@ -202,6 +202,13 @@ export default {
         posts: [...this.user.posts, data]
       })
       location.reload()
+    },
+    async addMemory(memory) {
+      const { data } = await this.$axios.$post('/v1/memories', memory)
+      this.$store.dispatch('auth/setUser', {
+        ...this.user,
+        memories: [...this.user.memories, data]
+      })
     }
   }
 }

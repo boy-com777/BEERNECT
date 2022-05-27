@@ -1,7 +1,5 @@
 <template>
-  <v-container
-    
-  >
+  <v-container>
     <v-card
       width="900"
       class="mx-auto"
@@ -11,7 +9,7 @@
         dark
         flat
       >
-        <v-toolbar-title>飲んだビールを登録する</v-toolbar-title>
+        <v-toolbar-title>{{ user.name }} が飲んだビールを登録する</v-toolbar-title>
       </v-toolbar>
       <v-row
         justify="center"
@@ -76,6 +74,7 @@
             block
             color="success"
             class="white--text"
+            @click="memorySubmit"
           >
             登録する
             <v-icon
@@ -95,13 +94,13 @@ export default {
   data () {
     return {
       beerSelect: '',
-      repeatSelect: [],
+      repeatSelect: '',
       beers: [],
       repeats: [
         { text: 'また購入する', value: 'また購入する' },
         { text: 'もしかしたら購入するかも', value: 'もしかしたら購入するかも' },
         { text: '悩み中', value: '悩み中' }
-      ]
+      ],
     }
   },
   async fetch () {
@@ -113,6 +112,16 @@ export default {
       return this.$store.state.auth.currentUser
     }
   },
+  methods: {
+    memorySubmit() {
+      const memory = {
+        beer_name: this.beerSelect,
+        repeat: this.repeatSelect,
+        user_id: this.user.id
+      }
+      this.$emit('submit', memory)
+    }
+  }
 }
 </script>
 
