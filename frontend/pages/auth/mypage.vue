@@ -143,6 +143,7 @@
           class="tab-item"
         >
           <memory @submit="addMemory"/>
+          <memory-list :memories="user.memories" />
         </v-tab-item>
       </v-tabs>
     </v-card>
@@ -155,6 +156,7 @@ import follow from '~/components/loggedIn/mypage/follow'
 import follower from '~/components/loggedIn/mypage/follower'
 import memory from '~/components/loggedIn/mypage/memory'
 import createPostsDialog from '~/components/posts/createPostsDialog'
+import memoryList from '~/components/loggedIn/mypage/memoryList'
 export default {
   components: {
     profile,
@@ -162,7 +164,8 @@ export default {
     follow,
     follower,
     memory,
-    createPostsDialog
+    createPostsDialog,
+    memoryList
   },
   layout: 'loggedIn',
   data () {
@@ -209,6 +212,7 @@ export default {
         ...this.user,
         memories: [...this.user.memories, data]
       })
+      location.reload()
     }
   }
 }

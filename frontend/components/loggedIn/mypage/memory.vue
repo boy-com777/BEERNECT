@@ -1,7 +1,8 @@
 <template>
   <v-container>
     <v-card
-      width="900"
+      v-if="user"
+      width="450"
       class="mx-auto"
     >
       <v-toolbar
@@ -16,13 +17,13 @@
       >
         <v-col
           cols="12"
-          sm="2"
+          sm="4"
         >
           <v-subheader>ビール一覧</v-subheader>
         </v-col>
         <v-col
           cols="12"
-          sm="6"
+          sm="7"
         >
           <v-select
             v-model="beerSelect"
@@ -41,13 +42,13 @@
       >
         <v-col
           cols="12"
-          sm="2"
+          sm="4"
         >
           <v-subheader right>リピート度合い</v-subheader>
         </v-col>
         <v-col
           cols="12"
-          sm="6"
+          sm="7"
         >
           <v-select
             v-model="repeatSelect"
