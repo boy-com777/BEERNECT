@@ -82,5 +82,8 @@ Rails.application.routes.draw do
 
     # memories 関連
     resources :memories, only: %i[index create]
+
+    # likes 関連
+    resources :likes, only: %i[create destroy]
   end
 end
