@@ -3,8 +3,8 @@ module V1
     before_action :set_user, only: [:destroy]
 
     def create
-      likepost = PostLike.create!(like_params)
-      if likepost.save
+      like = Like.create!(like_params)
+      if like.save
         render json: @current_user
       else
         render json: { status: 400 }
@@ -12,8 +12,8 @@ module V1
     end
 
     def destroy
-      likepost = @current_user.unlike(@post)
-      if likepost.destroy
+      like = @current_user.unlike(@post)
+      if like.destroy
         render json: @current_user
       else
         render json: { status: 400 }
@@ -28,7 +28,7 @@ module V1
     end
 
     def like_params
-      params.permit(:user_id, :post_id)
+      params.require(:like).permit(:user_id, :post_id)
     end
   end
 end

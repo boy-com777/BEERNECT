@@ -103,6 +103,77 @@
                 </v-card>
               </template>
             </v-container>
+            <v-col
+              cols="12"
+            >
+              <v-row
+                justify="end"
+              >
+                <div
+                  v-if="user.id === post.user_id"
+                >
+                  <v-btn
+                    v-if="like"
+                    icon
+                    text
+                    colr="red"
+                    @click="disLikedPost(post)"
+                  >
+                    <v-icon>
+                      mdi-heart
+                    </v-icon>
+                  </v-btn>
+                  <v-btn
+                    v-else
+                    icon
+                    text
+                    color="grey darken-2"
+                    @click="likedPost(post)"
+                  >
+                    <v-icon>
+                      mdi-heart-outline
+                    </v-icon>
+                  </v-btn>
+                  <p>{{ post.likedUsersCounts }}</p>
+                  <v-btn
+                    icon
+                    text
+                    @click="deletePost(post)"
+                  >
+                    <v-icon>
+                      mdi-delete
+                    </v-icon>
+                  </v-btn>
+                </div>
+                <div
+                  v-if="user.id !== post.user_id"
+                >
+                  <v-btn
+                    v-if="like"
+                    icon
+                    text
+                    color="red"
+                    @click="disLikedPost(post)"
+                  >
+                    <v-icon>
+                      mdi-heart
+                    </v-icon>
+                  </v-btn>
+                  <v-btn
+                    v-else
+                    icon
+                    text
+                    color="grey darken-2"
+                    @click="likedPost(post)"
+                  >
+                    <v-icon>
+                      mdi-heart-outline
+                    </v-icon>
+                    <p>{{ post.likedUsersCounts }}</p>
+                  </v-btn>
+                </div>
+              </v-row>
+            </v-col>
           </v-card>
         </v-col>
       </v-row>
@@ -111,6 +182,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import StarRating from 'vue-star-rating'
 export default{
   components: {
@@ -120,7 +192,8 @@ export default{
   data () {
     return {
       icon: require("@/assets/images/other/default-user.png"),
-      posts: []
+      posts: [],
+      like: false
     }
   },
   async fetch () {
@@ -130,7 +203,44 @@ export default{
   computed: {
     user() {
       return this.$store.state.auth.currentUser
-    }
+    },
+    ...mapGetters({
+      login: 'auth/loggedIn'
+    })
   },
+  created() {
+    this.$axios.$get('/v1/posts')
+    .then(() => {
+      if (this.login) {
+        this.posts.like.forEach((f) => {
+          if (f.id === this.user.id) {
+            this.like = true
+          }
+        })
+      }
+    })
+  },
+  methods: {
+    async likedPost(post) {
+      if (this.$store.state.auth.currentUser) {
+        await this.$axios.$post('/v1/likes', {
+          like: {
+            user_id: this.user.id,
+            post_id: post.id
+          }
+        })
+      }
+    },
+    async disLikedPost(post) {
+      if (this.$store.state.auth.currentUser) {
+        await this.$axios.$delete('/v1/likes/delete', {
+          like: {
+            user_id: this.user.id,
+            post_id: post.id
+          }
+        })
+      }
+    }
+  }
 }
 </script>
