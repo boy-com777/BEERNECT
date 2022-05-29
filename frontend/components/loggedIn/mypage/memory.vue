@@ -3,6 +3,7 @@
     <v-card
       v-if="user"
       width="450"
+      height="300"
       class="mx-auto"
     >
       <v-toolbar
@@ -29,7 +30,6 @@
             v-model="beerSelect"
             item-text="beer_name"
             :items="beers"
-            :menu-props="{ maxHeight: '400'}"
             label="Select"
             hint="飲んだビールを選択してください"
             prepend-icon="mdi-liquor"
@@ -53,7 +53,6 @@
           <v-select
             v-model="repeatSelect"
             :items="repeats"
-            :menu-props="{ maxHeight: '400' }"
             label="Select"
             hint="リピート度合いを選択してください"
             prepend-icon="mdi-repeat"

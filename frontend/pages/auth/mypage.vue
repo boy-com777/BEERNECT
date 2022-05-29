@@ -142,8 +142,12 @@
         <v-tab-item
           class="tab-item"
         >
-          <memory @submit="addMemory"/>
-          <memory-list :memories="user.memories" />
+          <div
+            v-if="user"
+          >
+            <memory @submit="addMemory"/>
+            <memory-list :memories="user.memories" />
+          </div>
         </v-tab-item>
       </v-tabs>
     </v-card>
