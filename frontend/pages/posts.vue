@@ -48,13 +48,13 @@
                         v-if="`${post.user_id}`!==`${user.id}`"
                         :to="`users/${post.user_id}`"
                       >
-                        <h6>{{ post.username }} が {{ $moment(post.created_at).format('YYYY年MM月DD日 HH時mm分') }} に投稿</h6>
+                        <h6>{{ post.user.name }} が {{ $moment(post.created_at).format('YYYY年MM月DD日 HH時mm分') }} に投稿</h6>
                       </nuxt-link>
                       <nuxt-link
                         v-else
                         to="/auth/mypage"
                       >
-                        <h6>{{ post.username }} が {{ $moment(post.created_at).format('YYYY年MM月DD日 HH時mm分') }} に投稿</h6>
+                        <h6>{{ post.user.name }} が {{ $moment(post.created_at).format('YYYY年MM月DD日 HH時mm分') }} に投稿</h6>
                       </nuxt-link>
                     </v-col>
                   </v-row>
@@ -69,7 +69,7 @@
                 class="mx-auto"
               >
                 <li>おすすめ度</li>
-                  <star-rating :rating="`${post.recomend_score}`" :read-only="true" :star-size="30"/>
+                  <star-rating :rating="Number(`${post.recomend_score}`)" :read-only="true" :star-size="30"/>
               </v-card>
               <br>
               <v-card
@@ -212,7 +212,7 @@ export default{
     this.$axios.$get('/v1/posts')
     .then(() => {
       if (this.login) {
-        this.posts.like.forEach((f) => {
+        this.post.liked_users.forEach((f) => {
           if (f.id === this.user.id) {
             this.like = true
           }

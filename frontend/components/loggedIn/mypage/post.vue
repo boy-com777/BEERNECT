@@ -59,7 +59,7 @@
                 class="mx-auto"
               >
                 <li>おすすめ度</li>
-                  <star-rating :rating="`${post.recomend_score}`" :read-only="true" :star-size="30"/>
+                  <star-rating :rating="Number(`${post.recomend_score}`)" :read-only="true" :star-size="30"/>
               </v-card>
               <br>
               <v-card

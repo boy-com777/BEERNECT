@@ -1,8 +1,8 @@
 module V1
   class PostsController < ApplicationController
     def index
-      post = Post.all.order(created_at: 'DESC')
-      render json: post
+      posts = Post.all.includes(:liked_users).order(created_at: 'DESC')
+      render json: posts.as_json(include: %i[user liked_users])
     end
 
     def show
