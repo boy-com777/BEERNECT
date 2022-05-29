@@ -208,18 +208,22 @@ export default{
       login: 'auth/loggedIn'
     })
   },
-  // created() {
-  //   this.$axios.$get('/v1/posts')
-  //   .then(() => {
-  //     if (this.login) {
-  //       this.post.liked_users.forEach((f) => {
-  //         if (f.id === this.user.id) {
-  //           this.like = true
-  //         }
-  //       })
-  //     }
-  //   })
-  // },
+  created() {
+    this.$axios
+      .get('/v1/posts')
+      .then((response) => {
+        this.$store.commit('post/setPosts', response.data, { root: true })
+      })
+      .then(() => {
+        if (this.login) {
+          this.post.liked_users.forEach((f) => {
+            if (f.id === this.user.id) {
+              this.like = true
+            }
+          })
+        }
+    })
+  },
   methods: {
     async likedPost(post) {
       if (this.$store.state.auth.currentUser) {
