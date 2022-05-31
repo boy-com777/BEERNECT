@@ -17,12 +17,14 @@ module V1
     def show
       user = User.includes(
         :following,
-        :followers
+        :followers,
+        :liked_posts
       ).find(params[:id])
       render json: user.as_json(
         include: [
           :following,
-          :followers
+          :followers,
+          :liked_posts
         ]
       )
     end

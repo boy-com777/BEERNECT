@@ -1,8 +1,7 @@
 <template>
   <v-card
-    width="800"
+    width="600"
     flat
-    color="transparent"
     class="mx-auto"
   >
     <v-container>
@@ -14,118 +13,99 @@
           :key="i"
           cols="12"
         >
-          <v-card
-            v-if="post"
-            width="600"
-            flat
-            outlined
-            class="mx-auto"
-          >
-            <v-container>
-              <v-card-title>
-                <v-container>
-                  <v-row>
-                    <v-col
-                      cols="4"
-                    >
-                      <v-avatar
-                        size="64"
-                      >
-                        <img
-                          v-if="user.avatar.url"
-                          :src="user.avatar.url"
-                        >
-                        <img
-                          v-else
-                          :src="icon"
-                        >
-                      </v-avatar>
-                    </v-col>
-                    <v-col
-                      cols="8"
-                    >
-                      <h4>{{ post.title }}</h4>
-                      <h6>{{ post.username }} が {{ $moment(post.created_at).format('YYYY年MM月DD日 HH時mm分') }} に投稿</h6>
-                    </v-col>
-                  </v-row>
-                </v-container>
-              </v-card-title>
-            </v-container>
-            <v-divider></v-divider>
-            <v-container>
-              <v-card
-                flat
-                color="transparent"
-                class="mx-auto"
-              >
-                <li>おすすめ度</li>
-                  <star-rating :rating="`${post.recomend_score}`" :read-only="true" :star-size="30"/>
-              </v-card>
-              <br>
-              <v-card
-                flat
-                color="transparent"
-                class="mx-auto"
-              >
-                <li>飲んだ感想</li>
-                  <h4>{{ post.content }}</h4>
-              </v-card>
-              <br>
-              <template
-                v-if="post.image.url"
-              >
-                <v-card
-                  flat
-                  color="transparent"
-                  class="mx-auto"
-                >
-                  <v-layout
-                    justify-center
+          <v-container>
+            <v-card-title
+              v-if="user"
+            >
+              <v-container>
+                <v-row>
+                  <v-col
+                    cols="4"
                   >
                     <v-avatar
-                      tile
-                      size="256"
+                      size="64"
                     >
-                      <v-img
-                        :src="`${post.image.url}`"
-                      />
+                      <img
+                        v-if="user.avatar.url"
+                        :src="user.avatar.url"
+                        alt="Avatar"
+                      >
+                      <img
+                        v-else
+                        :src="icon"
+                        alt="Avatar"
+                      >
                     </v-avatar>
-                  </v-layout>
-                </v-card>
-              </template>
-            </v-container>
-            <v-container>
-              <v-footer
-                color="white"
+                  </v-col>
+                  <v-col
+                    cols="8"
+                  >
+                    <h4>{{ post.title }}</h4>
+                    <v-divider></v-divider>
+                    <h5>{{ post.username }}</h5>
+                    <h5>{{ $moment(post.created_at).format('YYYY年MM月DD日 HH時mm分') }} に投稿</h5>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-card-title>
+          </v-container>
+          <v-container>
+            <v-card
+            flat
+            color="transparent"
+            class="mx-auto"
+            >
+              <li>おすすめ度</li>
+              <star-rating :rating="Number(`${post.recomend_score}`)" :read-only="true" :star-size="30"/>
+            </v-card>
+            <br>
+            <v-card
+              flat
+              color="transparent"
+              class="mx-auto"
+            >
+              <li>飲んだ感想</li>
+              <h4>{{ post.content }}</h4>
+            </v-card>
+            <br>
+            <template
+              v-if="post.image.url"
+            >
+              <v-card
+                flat
+                color="transparent"
+                class="mx-auto"
               >
-                <v-card
-                  class="footer"
-                  color="transparent"
-                  flat
+                <v-layout
+                  justify-center
                 >
-                <v-spacer></v-spacer>
-                <v-icon
-                  small
-                  @click="deletePost(post)"
-                >
-                  mdi-delete
-                </v-icon>
-                <!-- <v-icon
-                  color="black"
-                  size="20"
-                >
-                  mdi-thumb-up-outline
-                </v-icon>
-                <v-icon
-                  color="black"
-                  size="20"
-                >
-                  mdi-message-reply-text
-                </v-icon> -->
-                </v-card>
-              </v-footer>
-            </v-container>
-          </v-card>
+                  <v-avatar
+                    tile
+                    size="256"
+                  >
+                    <v-img
+                      :src="`${post.image.url}`"
+                    />
+                  </v-avatar>
+                </v-layout>
+              </v-card>
+            </template>
+          </v-container>
+          <v-row
+            justify="end"
+            class="pr-3"
+          >
+            <v-btn
+              icon
+              text
+              color="grey darken-2"
+              @click="deletePost(post)"
+            >
+              <v-icon>
+                mdi-delete
+              </v-icon>
+            </v-btn>
+          </v-row>
         </v-col>
       </v-row>
     </v-container>

@@ -59,4 +59,7 @@ export const getters = {
   users(state) {
     return state.users
   },
+  loggedIn(state) {
+    return state.loggedIn
+  },
 }
