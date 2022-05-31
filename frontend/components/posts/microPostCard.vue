@@ -34,6 +34,7 @@
                   cols="8"
                 >
                   <h4>{{ post.title }}</h4>
+                  <v-divider></v-divider>
                   <nuxt-link
                     v-if="`${post.user_id}`!==`${user.id}`"
                     :to="`users/${post.user_id}`"
@@ -91,7 +92,7 @@
               </v-layout>
               </v-card>
             </template>
-            </v-container>
+          </v-container>
           <v-row
             justify="end"
             class="pr-3"
@@ -103,6 +104,7 @@
                 icon
                 text
                 color="grey darken-2"
+                @click="deletePost(post)"
               >
                 <v-icon>
                   mdi-delete
@@ -194,6 +196,21 @@ export default {
           post_id: this.post.id
         }
       })
+    },
+    async deletePost(post) {
+      const response = confirm("削除しますか？")
+      if (response) {
+        await this.$axios.delete(`/v1/posts/${post.id}`)
+        const posts = this.user.posts
+        const newUser = {
+          ...this.user,
+          posts
+        }
+        this.$store.dispatch('auth/setUser', newUser)
+        .then(() => {
+          location.reload()
+        })
+      }
     }
   }
 }
