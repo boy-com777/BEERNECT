@@ -2,23 +2,11 @@ module V1
   class UsersController < ApplicationController
     def index
       users = if params[:uid]
-                User.includes(
-                  :following,
-                  :followers,
-                  :posts,
-                  { liked_posts: [:liked_users] }
-                ).find_by(uid: params[:uid])
+                User.find_by(uid: params[:uid])
               else
                 User.all
               end
-      render json: users.as_json(
-        include: [
-          :following,
-          :followers,
-          :posts,
-          { liked_posts: { include: { liked_users: { only: [:id] } } } }
-        ]
-      )
+      render json: users
     end
 
     # def show
@@ -30,16 +18,13 @@ module V1
       user = User.includes(
         :following,
         :followers,
-        { liked_posts: [:liked_users] }
+        :liked_posts
       ).find(params[:id])
       render json: user.as_json(
         include: [
-          { liked_posts: { include:
-            {
-              liked_users: { only: [:id] }
-            } } },
           :following,
-          :followers
+          :followers,
+          :liked_posts
         ]
       )
     end

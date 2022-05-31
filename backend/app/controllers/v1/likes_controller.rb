@@ -12,7 +12,7 @@ module V1
     end
 
     def destroy
-      like = @current_user.unlike(@post)
+      like = Like.find_by(user_id: @current_user, post_id: @post)
       if like.destroy
         render json: @current_user
       else

@@ -94,6 +94,7 @@
             </v-container>
           <v-row
             justify="end"
+            class="pr-3"
           >
             <div
               v-if="post.user_id === user.id"
@@ -109,14 +110,28 @@
               </v-btn>
             </div>
             <v-btn
+              v-if="like"
               icon
               text
-              color="grey darken-2"
+              color="red"
+              @click="disLikedPost(post)"
             >
               <v-icon>
                 mdi-heart
               </v-icon>
             </v-btn>
+            <v-btn
+              v-else
+              icon
+              text
+              color="grey darken-2"
+              @click="likedPost(post)"
+            >
+              <v-icon>
+                mdi-heart-outline
+              </v-icon>
+            </v-btn>
+            <p>{{ post.liked_users.length }}</p>
           </v-row>
         </v-container>
       </v-row>
@@ -125,7 +140,6 @@
 </template>
 
 <script>
-// import { mapActions } from 'vuex'
 import StarRating from 'vue-star-rating'
 export default {
   components: {
@@ -141,34 +155,45 @@ export default {
     return {
       icon: require("@/assets/images/other/default-user.png"),
       postId: '',
+      like: false,
     }
   },
   computed: {
     user() {
       return this.$store.state.auth.currentUser
     },
+    login() {
+      return this.$store.state.auth.loggedIn
+    }
+  },
+  created() {
+    this.$axios.$get('/v1/posts')
+      .then(() => {
+        if (this.login === true) {
+          this.post.liked_users.forEach((f) => {
+            if (f.id === this.user.id) {
+              this.like = true
+            }
+          })
+        }
+      })
   },
   methods: {
-    // ...mapActions({}),
-    likedPost (payload) {
-      if (this.$store.state.auth.data) {
-        this.$axios.$post('/v1/likes', {
-          like: {
-            user_id: this.user.id,
-            post_id: payload.id
-          }
-        })
-      }
+    likedPost () {
+      this.$axios.$post('/v1/likes', {
+        like: {
+          user_id: this.user.id,
+          post_id: this.post.id
+        }
+      })
     },
-    disLikedPost (payload) {
-      if (this.$store.state.auth.data) {
-        this.$axios.$delete('/v1/likes/delete', {
-          params: {
-            user_id: this.user.id,
-            post_id: payload.id
-          }
-        })
-      }
+    disLikedPost () {
+      this.$axios.$delete('/v1/likes/delete', {
+        params: {
+          user_id: this.user.id,
+          post_id: this.post.id
+        }
+      })
     }
   }
 }
