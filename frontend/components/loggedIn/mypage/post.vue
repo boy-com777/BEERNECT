@@ -2,6 +2,7 @@
   <v-card
     width="600"
     flat
+    color="transparent"
     class="mx-auto"
   >
     <v-container>
