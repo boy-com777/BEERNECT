@@ -82,6 +82,7 @@
               </v-icon>
             </v-btn>
           </v-card>
+          <br>
         </v-tab-item>
         <v-tab-item
           class="tab-item"

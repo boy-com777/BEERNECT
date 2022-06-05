@@ -8,7 +8,7 @@
     >
       <v-card>
         <v-card-title
-          class="text-h6 success font-weight-bold"
+          class="text-h6 myorange font-weight-bold"
         >
           飲んだビールについて感想を書く
         </v-card-title>
