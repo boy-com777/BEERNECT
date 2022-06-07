@@ -188,6 +188,7 @@ export default {
           post_id: this.post.id
         }
       })
+      location.reload()
     },
     disLikedPost () {
       this.$axios.$delete('/v1/likes/delete', {
@@ -196,6 +197,7 @@ export default {
           post_id: this.post.id
         }
       })
+      location.reload()
     },
     async deletePost(post) {
       const response = confirm("削除しますか？")

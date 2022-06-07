@@ -1,10 +1,9 @@
 <template>
-  <v-card
+  <!-- <v-card
     width="600"
     flat
-    color="transparent"
     class="mx-auto"
-  >
+  > -->
     <v-container>
       <v-row
         dense
@@ -14,6 +13,11 @@
           :key="i"
           cols="12"
         >
+          <v-card
+            width="600"
+            flat
+            class="mx-auto"
+          >
           <v-container>
             <v-card-title
               v-if="user"
@@ -107,10 +111,11 @@
               </v-icon>
             </v-btn>
           </v-row>
+          </v-card>
         </v-col>
       </v-row>
     </v-container>
-  </v-card>
+  <!-- </v-card> -->
 </template>
 
 <script>
