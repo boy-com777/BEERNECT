@@ -4,11 +4,11 @@
   >
     <v-dialog
       v-model="createPostsDialog"
-      width="1000"
+      width="600"
     >
       <v-card>
         <v-card-title
-          class="text-h6 success font-weight-bold"
+          class="text-h6 myorange font-weight-bold"
         >
           飲んだビールについて感想を書く
         </v-card-title>
@@ -16,7 +16,7 @@
             v-model="isValid"
           >
             <v-card
-              width="900"
+              width="500"
               flat
               color="transparent"
               class="mx-auto"
@@ -26,7 +26,7 @@
               >
                 タイトル
                 <v-card
-                  width="800"
+                  width="400"
                   flat
                   color="transparent"
                   class="mx-auto"
@@ -42,7 +42,7 @@
               </div>
             </v-card>
             <v-card
-              width="900"
+              width="500"
               flat
               color="transparent"
               class="mx-auto"
@@ -52,7 +52,7 @@
               >
                 おすすめ度
                 <v-card
-                  width="800"
+                  width="400"
                   flat
                   color="transparent"
                   class="mx-auto"
@@ -63,7 +63,7 @@
             </v-card>
             <br>
             <v-card
-              width="900"
+              width="500"
               flat
               color="transparent"
               class="mx-auto"
@@ -73,7 +73,7 @@
               >
                 投稿内容
                 <v-card
-                  width="800"
+                  width="400"
                   flat
                   color="transparent"
                   class="mx-auto"
@@ -90,7 +90,7 @@
             </v-card>
             <br>
             <v-card
-              width="800"
+              width="500"
               flat
               color="transparent"
               class="mx-auto"

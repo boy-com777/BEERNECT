@@ -7,12 +7,14 @@
         v-for="(follower, i) in followers"
         :key="i"
         cols="12"
-        xl="4"
-        lg="4"
+        xl="8"
+        lg="8"
         sm="8"
       >
         <v-card
           v-if="follower"
+          width="400"
+          class="mx-auto"
         >
           <v-container>
             <v-card-title>
