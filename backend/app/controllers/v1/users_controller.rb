@@ -58,6 +58,15 @@ module V1
       end
     end
 
+    def destroy
+      user = User.find(params[:id])
+      if user.destroy
+        render json: user
+      else
+        render json: user.errors
+      end
+    end
+
     private
 
     def user_params

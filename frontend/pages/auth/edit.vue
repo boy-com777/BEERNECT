@@ -83,12 +83,26 @@
             アイコン更新
           </v-btn>
         </v-card-actions>
+        <v-card-actions>
+          <v-btn
+            rounded
+            outlined
+            block
+            dark
+            color="red"
+            class="ml-2 font-weight-bold"
+            @click="deleteAccount"
+          >
+            退会する
+          </v-btn>
+        </v-card-actions>
       </v-card>
     </v-row>
   </v-container>
 </template>
 
 <script>
+import firebase from '~/plugins/firebase'
 export default {
   layout: 'loggedIn',
   async asyncData({ $axios, store }) {
@@ -119,7 +133,8 @@ export default {
       profileRules: [
         v => !!v || '',
         v => (!!v && profileMax >= v.length) || `${profileMax}文字以内で入力してください`
-      ]
+      ],
+      userId: ''
     }
   },
   computed: {
@@ -176,6 +191,22 @@ export default {
         .catch((error) => {
           alert(error.message)
         })
+    },
+    async deleteAccount() {
+      const response = confirm("退会しますか？")
+      if (response) {
+        const user = await firebase.auth().currentUser
+        user.delete()
+          .then(() => {
+            this.$axios.$delete(`/v1/users/${this.userId}`)
+          })
+            .then(() => {
+              firebase.auth().signOut()
+              this.$store.dispatch('auth/setUser', null)
+              this.$store.dispatch('auth/setLoginState', false)
+              this.$router.push('/')
+            })
+      }
     }
   }
 }

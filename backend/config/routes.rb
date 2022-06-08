@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   namespace :v1 do
     # user関連
     patch 'users/:id/avatar_update', to: 'users#avatar_update'
-    resources :users, only: %i[index show create update]
+    resources :users, only: %i[index show create update destroy]
 
     # beer関連
     # beer_style
