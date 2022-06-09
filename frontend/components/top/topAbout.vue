@@ -84,7 +84,7 @@
         <v-card-text
           class="mydarkolive--text text-center"
         >
-          投稿された感想にいいねやコメントをしてみましょう。そして交流しましょう。
+          投稿された感想にいいねしてみましょう。
         </v-card-text>
       </v-col>
       <v-col
