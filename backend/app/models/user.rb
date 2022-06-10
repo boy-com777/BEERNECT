@@ -10,6 +10,12 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :post
 
+  # バリデーション
+  validates :uid, presence: true
+  validates :name, presence: true, length: { maximum: 12 }
+  validates :email, presence: true, length: { maximum: 255 }, uniqueness: true
+  validates :profile, length: { maximum: 200 }
+
   # ユーザーをフォローする
   def follow(other_user)
     following << other_user
