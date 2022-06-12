@@ -42,7 +42,7 @@ jobs:
           key: gem-cache-v1-{{ checksum "~/repo/backend/Gemfile.lock" }}
           paths:
             - ~/repo/backend/vendor/bundle
-          workind_directory: ~/repo/backend
+          working_directory: ~/repo/backend
       
       # DataBase setup
       - run:
