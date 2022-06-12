@@ -12,11 +12,11 @@ orbs:
 jobs:
   test_backend:
     docker:
-      - image: cimg/ruby:3.1.0
+      - image: circleci/ruby:2.7.3-alpine
         environment:
           RAILS_ENV: test
           DB_HOST: 127.0.0.1
-      - image: cimg/postgres:13.2-alpine
+      - image: circleci/postgres:13.2-alpine
 
     working_directory: ~/repo
 
