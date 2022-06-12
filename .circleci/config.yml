@@ -16,7 +16,7 @@ jobs:
         environment:
           RAILS_ENV: test
           DB_HOST: 127.0.0.1
-      - image: circleci/postgres:13.2-alpine
+      - image: cimg/postgres:13.2
 
     working_directroy: ~/repo
     # executor: ruby/default
@@ -87,4 +87,4 @@ workflows:
       - test_backend:
           filters:
             branches:
-              ignore: develop
+              ignore: main
