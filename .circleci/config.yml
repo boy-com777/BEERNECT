@@ -16,7 +16,7 @@ jobs:
         environment:
           RAILS_ENV: test
           DB_HOST: 127.0.0.1
-      - image: circleci/postgres:13.2-alpine
+      - image: cimg/postgres:13.6
 
     working_directory: ~/repo
 
