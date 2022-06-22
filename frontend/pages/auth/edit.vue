@@ -60,7 +60,6 @@
             プロフィール更新
           </v-btn>
         </v-card-actions>
-        <!-- <v-form> -->
           <v-file-input
             v-model="editAvatar"
             label="アイコン画像"
@@ -69,7 +68,6 @@
             accept="image/*"
             @change="setAvatar"
           />
-        <!-- </v-form> -->
         <v-card-actions>
           <v-btn
             rounded
