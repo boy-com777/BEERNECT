@@ -4,7 +4,7 @@ ARG WORKDIR
 
 ENV RUNTIME_PACKAGES="linux-headers libxml2-dev make gcc libc-dev nodejs tzdata postgresql-dev postgresql git" \
   DEV_PACKAGES="build-base curl-dev" \
-  HOME=/${WORKDIR} \
+  HOME=/app \
   LANG=C.UTF-8 \
   TZ=Asia/Tokyo
 
