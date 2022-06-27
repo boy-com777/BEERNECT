@@ -18,5 +18,16 @@ RUN echo ${API_URL}
 
 WORKDIR ${HOME}
 
+ADD package.json /app/package.json
+ADD yarn.lock /app/yarn.lock
+
+RUN yarn install
+
+ADD . /app
+
+RUN yarn build
+
 # EXPOSE ${CONTAINER_PORT}
 EXPOSE 8080
+
+CMD ["yarn", "start"]
