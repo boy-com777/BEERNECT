@@ -19,7 +19,7 @@ module V1
       render json: review if review.destroy
     end
 
-    praivate
+    private
 
     def review_params
       params.require(:review).permit(:title, :content, :review_score, :user_id, :beer_id)

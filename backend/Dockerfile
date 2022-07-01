@@ -12,6 +12,9 @@ RUN echo ${HOME}
 
 WORKDIR ${HOME}
 
+ADD Gemfile ${HOME}/Gemfile
+ADD Gemfile.lock ${HOME}/Gemfile.lock
+
 COPY Gemfile* ./
 
 RUN apk update && \
@@ -19,8 +22,13 @@ RUN apk update && \
   apk add --no-cache ${RUNTIME_PACKAGES} && \
   apk add --virtual build-dependencies --no-cache ${DEV_PACKAGES} && \
   bundle install -j4 && \
-  apk del build-dependencies
+  apk del build-dependencies && \
+  rm -rf ${HOME}/tmp/pids/server.pid
 
 COPY . .
+
+ADD . ${HOME}
+
+EXPOSE 3000
 
 CMD ["rails", "server", "-b", "0.0.0.0"]
