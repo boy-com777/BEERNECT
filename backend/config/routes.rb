@@ -85,5 +85,8 @@ Rails.application.routes.draw do
 
     # likes 関連
     resources :likes, only: %i[create destroy]
+
+    # health_check
+    get :health_check, to: 'health_check#index'
   end
 end
