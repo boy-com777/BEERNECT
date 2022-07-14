@@ -21,6 +21,7 @@ RUN apk update && \
   apk upgrade && \
   apk add --no-cache ${RUNTIME_PACKAGES} && \
   apk add --virtual build-dependencies --no-cache ${DEV_PACKAGES} && \
+  apk add nginx sudo && \
   bundle install -j4 && \
   apk del build-dependencies && \
   rm -rf ${HOME}/tmp/pids/server.pid
@@ -28,7 +29,13 @@ RUN apk update && \
 COPY . .
 
 ADD . ${HOME}
+RUN mkdir -p tmp/sockets
+
+# RUN addgroup -S nginx
+# RUN adduser -S nginx -G nginx
+ADD nginx/nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 3000
+RUN chmod +x /app/entrypoint.sh
 
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["/app/entrypoint.sh"]
