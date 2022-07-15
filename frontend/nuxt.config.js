@@ -59,7 +59,7 @@ export default {
     // baseURL: '/',
     baseURL:
       process.env.NODE_ENV === 'production'
-        ? 'http://backend.beernect.com'
+        ? 'https://backend.beernect.com'
         : 'http://localhost:3000',
   },
 

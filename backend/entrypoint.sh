@@ -2,6 +2,7 @@
 
 # sudo service nginx start
 cd /app
-bin/setup
-echo $DATABASE_URL
+bundle exec rails db:seed RAILS_ENV=production
+# bin/setup
+# echo $DATABASE_URL
 bundle exec pumactl start

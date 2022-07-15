@@ -31,3 +31,4 @@
 /vendor/bundle
 /.vscode
 /public/uploads
+/config/initializers/carrierwave.rb
