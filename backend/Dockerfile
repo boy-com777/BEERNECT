@@ -12,6 +12,7 @@ RUN echo ${HOME}
 
 WORKDIR ${HOME}
 
+# local実行時はコメントアウト
 ADD Gemfile ${HOME}/Gemfile
 ADD Gemfile.lock ${HOME}/Gemfile.lock
 
@@ -28,14 +29,19 @@ RUN apk update && \
 
 COPY . .
 
+# local実行時はコメントアウト
 ADD . ${HOME}
 RUN mkdir -p tmp/sockets
 
-# RUN addgroup -S nginx
-# RUN adduser -S nginx -G nginx
+# local実行時はコメントアウト
 ADD nginx/nginx.conf /etc/nginx/nginx.conf
 
+# local実行時はコメントアウト
 EXPOSE 3000
 RUN chmod +x /app/entrypoint.sh
 
+# local実行時はコメントアウト
 CMD ["/app/entrypoint.sh"]
+
+# local環境
+# CMD ["rails", "server", "-b", "0.0.0.0"]
