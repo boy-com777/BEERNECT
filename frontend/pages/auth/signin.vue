@@ -49,14 +49,14 @@
           >
             ログイン
           </v-btn>
-          <v-card-actions>
+          <!-- <v-card-actions>
             <nuxt-link
               to="/auth/reset"
               class="body-2 text-decoration-none"
             >
               パスワードをお忘れの方はこちら
             </nuxt-link>
-          </v-card-actions>
+          </v-card-actions> -->
           <v-card-actions>
             <nuxt-link
               to="/auth/signup"

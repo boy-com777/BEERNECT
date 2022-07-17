@@ -9,14 +9,7 @@ ARG DOMAIN
 ENV HOME=/app \
   LANG=C.UTF-8 \
   TZ=Asia/Tokyo \
-  HOST=0.0.0.0 \
-  # API_URL=http://localhost:3000
-  API_URL=https://backend.beernect.com \
-  DOMAIN=https://beernect.com
-
-# RUN echo ${HOME}
-# RUN echo ${CONTAINER_PORT}
-# RUN echo ${API_URL}
+  HOST=0.0.0.0
 
 WORKDIR ${HOME}
 
